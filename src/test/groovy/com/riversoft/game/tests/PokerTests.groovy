@@ -10,7 +10,7 @@ import spock.lang.Specification
 
 class PokerTests extends Specification {
 
-    def "генерация всех кард" () {
+    def "генерация всех кард"() {
         when:
         Poker game = new Poker()
 
@@ -37,7 +37,7 @@ class PokerTests extends Specification {
         game.allCards.count { t -> t.rank == Rank.ACE } == 4
     }
 
-    def "генерация изначальной колоды" () {
+    def "генерация изначальной колоды"() {
         given:
         Poker game = new Poker()
 
@@ -67,7 +67,7 @@ class PokerTests extends Specification {
         game.deck.count { t -> t.rank == Rank.ACE } == 4
     }
 
-    def "создаем стол" () {
+    def "создаем стол"() {
         given:
         List<Long> banks = [100, 200, 300]
         Poker game = new Poker()
@@ -79,7 +79,7 @@ class PokerTests extends Specification {
         game.arms.size() == banks.size()
     }
 
-    def "делаем первую раздачу" () {
+    def "делаем первую раздачу"() {
         given:
         List<Long> banks = [100, 100, 100]
         Poker game = new Poker()
@@ -93,7 +93,62 @@ class PokerTests extends Specification {
         game.commonCards.size() == 5
     }
 
-    def "Four" () {
+    //# region Combination
+
+    def "RoyalFlush"() {
+        given:
+        List<Long> banks = [100, 100, 100]
+        Poker game = new Poker()
+        def commonCards = [new Card(Suit.CLUB, Rank.QUEEN), new Card(Suit.CLUB, Rank.ACE), new Card(Suit.CLUB, Rank.TEN), new Card(Suit.CLUB, Rank.JACK), new Card(Suit.CLUB, Rank.KING)]
+        def playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.NINE)]
+
+        when:
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.RoyalFlush
+        game.arms[0].firstCard.rank == Rank.ACE
+        game.arms[0].comboCards.count { t -> t.suit == Suit.CLUB } == 5
+        game.arms[0].playerCardNumbers == []
+        game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
+
+        when:
+        commonCards = [new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.HEART, Rank.ACE), new Card(Suit.HEART, Rank.TEN), new Card(Suit.HEART, Rank.JACK), new Card(Suit.HEART, Rank.KING)]
+        playerCards = [new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.HEART, Rank.FIVE)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.RoyalFlush
+        game.arms[0].firstCard.rank == Rank.ACE
+        game.arms[0].comboCards.count { t -> t.suit == Suit.HEART } == 5
+        game.arms[0].playerCardNumbers == [0]
+        game.arms[0].commonCardNumbers == [1, 2, 3, 4]
+
+        when:
+        commonCards = [new Card(Suit.SPADE, Rank.ACE), new Card(Suit.HEART, Rank.ACE), new Card(Suit.SPADE, Rank.JACK), new Card(Suit.SPADE, Rank.KING), new Card(Suit.HEART, Rank.KING)]
+        playerCards = [new Card(Suit.SPADE, Rank.QUEEN), new Card(Suit.SPADE, Rank.TEN)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.RoyalFlush
+        game.arms[0].firstCard.rank == Rank.ACE
+        game.arms[0].comboCards.count { t -> t.suit == Suit.SPADE } == 5
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [0, 2, 3]
+    }
+
+    def "Four"() {
         given:
         List<Long> banks = [100, 100, 100]
         Poker game = new Poker()
@@ -104,7 +159,6 @@ class PokerTests extends Specification {
         game.startGame(banks)
         game.firstGame()
         changeCards(game, commonCards, playerCards)
-        game.isFour(game.arms[0])
 
         then:
         game.arms[0].combination == Combination.Four
@@ -112,7 +166,89 @@ class PokerTests extends Specification {
         game.arms[0].secondCard == commonCards[4]
         game.arms[0].playerCardNumbers == []
         game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
+
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.QUEEN), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.SPADE, Rank.NINE)]
+        playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.NINE)]
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.Four
+        game.arms[0].firstCard.rank == commonCards[0].rank
+        game.arms[0].secondCard == commonCards[2]
+        game.arms[0].playerCardNumbers == [1]
+        game.arms[0].commonCardNumbers == [0, 2, 3, 4]
+
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.SPADE, Rank.NINE)]
+        playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.EIGHT)]
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.Four
+        game.arms[0].firstCard.rank == playerCards[0].rank
+        game.arms[0].secondCard.rank == commonCards[0].rank
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [0, 2, 3] || [2, 3, 4]
     }
+
+
+    def "Straight"() {
+        given:
+        List<Long> banks = [100, 100, 100]
+        Poker game = new Poker()
+        def commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.DIAMOND, Rank.FIVE), new Card(Suit.SPADE, Rank.FIVE), new Card(Suit.CLUB, Rank.KING)]
+        def playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.NINE)]
+
+        when:
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+
+        then:
+        game.arms[0].combination == Combination.Four
+        game.arms[0].firstCard.rank == commonCards[0].rank
+        game.arms[0].secondCard == commonCards[4]
+        game.arms[0].playerCardNumbers == []
+        game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
+
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.QUEEN), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.SPADE, Rank.NINE)]
+        playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.NINE)]
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.Four
+        game.arms[0].firstCard.rank == commonCards[0].rank
+        game.arms[0].secondCard == commonCards[2]
+        game.arms[0].playerCardNumbers == [1]
+        game.arms[0].commonCardNumbers == [0, 2, 3, 4]
+
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.SPADE, Rank.NINE)]
+        playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.EIGHT)]
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.Four
+        game.arms[0].firstCard.rank == playerCards[0].rank
+        game.arms[0].secondCard.rank == commonCards[0].rank
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [0, 2, 3] || [2, 3, 4]
+    }
+
 
     private void changeCards(Poker game, List<Card> commonCards, List<Card> playerCards) {
         game.commonCards = commonCards
@@ -122,4 +258,6 @@ class PokerTests extends Specification {
         game.arms[0].allCards.addAll(game.commonCards.collect())
         game.arms[0].allCards.sort { t -> t.rank }
     }
+
+    // endregion
 }

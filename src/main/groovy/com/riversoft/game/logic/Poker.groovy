@@ -34,6 +34,7 @@ class Poker {
     }
 
     void startGame(List<Long> banks) {
+        arms.clear()
         for (int i = 0; i < banks.size(); i++) {
             arms.add(new Arm(bank: banks[i], active: true, status: Status.READY))
         }
@@ -84,6 +85,9 @@ class Poker {
     }
 
     void checkCombination(Arm arm) {
+        arm.playerCardNumbers = []
+        arm.commonCardNumbers = []
+
         if (isRoyalFlush(arm)) {
             return
         }
@@ -129,10 +133,25 @@ class Poker {
     }
 
     boolean isRoyalFlush(Arm arm) {
+        for (def suit : Suit.values()) {
+            def allFlushCards = arm.allCards.findAll { t -> t.suit == suit }.sort { t -> t.rank }
+            int count = allFlushCards.size()
+
+            if (allFlushCards.size() >= 5 && allFlushCards[count - 5].rank == Rank.TEN) {
+                arm.comboCards = allFlushCards.drop(count - 5)
+                arm.combination = Combination.RoyalFlush
+                arm.firstCard = arm.comboCards.last()
+
+                fillNumberLists(arm)
+
+                return true
+            }
+        }
         return false
     }
 
     boolean isStraightFlush(Arm arm) {
+        return false
     }
 
     boolean isFour(Arm arm) {
@@ -141,16 +160,16 @@ class Poker {
             arm.firstCard = arm.allCards[3]
 
             // определяем пятую карту комбинации
-            // если первая карта принадлежие четверке - тогда это последняя карта (плюс первые четыре)
-            if (arm.allCards[0].rank == arm.firstCard.rank) {
-                arm.comboCards = arm.allCards.take(4)
-                arm.comboCards.add(arm.allCards[6])
-                arm.secondCard = arm.allCards[6]
-            }
-            // если нет - тогда это 3-я карта (плюс следующие)
-            else {
+            // если последняя карта принадлежие четверке - тогда третья и все следующие (четыре)
+            if (arm.allCards[6].rank == arm.firstCard.rank) {
                 arm.comboCards = arm.allCards.drop(2)
                 arm.secondCard = arm.allCards[2]
+            }
+            // если нет - тогда это последняя карта (плюс вся четверка)
+            else {
+                arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.firstCard.rank }.toList())
+                arm.comboCards.add(arm.allCards[6])
+                arm.secondCard = arm.allCards[6]
             }
 
             fillNumberLists(arm)
@@ -165,18 +184,52 @@ class Poker {
     }
 
     boolean isFlush(Arm arm) {
-        int count
-        Suit flushSuit
+        for (def suit : Suit.values()) {
+            def allFlushCards = allCards.findAll { t -> t.suit == suit }.sort()
+            int count = allFlushCards.size()
 
-        count = allCards.count { t -> t.suit == Suit.SPADE }
-        if (count >= 5) {
-            def comboCards = allCards.findAll { t -> t.suit == Suit.SPADE }.drop(count - 5)
+            if (allFlushCards.size() >= 5) {
+                arm.combination = Combination.Flush
+                arm.comboCards = allFlushCards.drop(count - 5)
+                arm.firstCard = commonCards.last()
 
+                fillNumberLists(arm)
+
+                return true
+            }
         }
+
         return false
     }
 
     boolean isStraight(Arm arm) {
+        // убрать повторные символы и проверить
+//        for (def suit : Suit.values()) {
+//            def allFlushCards = allCards.findAll { t -> t.suit == suit }.sort()
+//            int count = allFlushCards.size()
+//
+//            if (allFlushCards.size() >= 5) {
+//                arm.combination = Combination.Flush
+//
+//                // проверка на стрит туз-2-3-4-5
+//                if (allFlushCards[3].rank == Rank.FIVE && allFlushCards.last().rank == Rank.ACE) {
+//                    if (count == 7) {
+//                        allFlushCards.remove(4)
+//                        allFlushCards.remove(4)
+//                    }
+//                    else if (count == 6) {
+//                        allFlushCards.remove(4)
+//                    }
+//
+//                    arm.firstCard = allFlushCards[3]
+//                    arm.comboCards = allFlushCards
+//                }
+//                else {
+//                    arm.comboCards = allFlushCards.drop(count - 5)
+//                    arm.firstCard = allFlushCards.last()
+//                }
+//            }
+//        }
         return false
     }
 
