@@ -115,8 +115,6 @@ class Poker {
         if (isOnePair(arm)) {
             return
         }
-
-
     }
 
     private void fillNumberLists(Arm arm) {
@@ -158,23 +156,20 @@ class Poker {
             def allFlushCards = arm.allCards.findAll { t -> t.suit == suit }.sort { t -> t.rank }
             int count = allFlushCards.size()
 
-            if (count == 5 && checkStraight(allFlushCards, arm)) {
+            // проверка на классический стрит
+            if (count == 5 && checkClassicStraight(allFlushCards, arm) || count == 6 && checkClassicStraight(allFlushCards.drop(1), arm) || count == 6 && checkClassicStraight(allFlushCards.take(5), arm) ||
+                    count == 7 && checkClassicStraight(allFlushCards.drop(2), arm) || count == 7 && checkClassicStraight(allFlushCards.drop(1).take(5), arm) || count == 7 && checkClassicStraight(allFlushCards.take(5), arm)) {
                 arm.combination = Combination.STRAIGHT_FLUSH
+
+                return true
+            }
+            // проверка на нижний стрит
+            if (count >= 5 && checkLowerStraight(allFlushCards, arm)) {
+                arm.combination = Combination.STRAIGHT_FLUSH
+
+                return true
             }
         }
-        return false
-    }
-
-    private boolean checkStraight(List<Card> allCards, Arm arm) {
-        if (allCards[4].rank.getNumber() - allCards[0].rank.getNumber() == 4) {
-            arm.comboCards = allCards
-            arm.firstCard = arm.comboCards.last()
-
-            fillNumberLists(arm)
-
-            return true
-        }
-
         return false
     }
 
@@ -204,7 +199,55 @@ class Poker {
     }
 
     boolean isFullHouse(Arm arm) {
-        return false
+        // проверяем на тройку
+        Card firstCard = null
+        Card secondCard = null
+
+        if (arm.allCards.count { t -> t.rank == arm.allCards[4].rank } == 3) {
+            firstCard = arm.allCards[4]
+        }
+        else if (arm.allCards.count { t -> t.rank == arm.allCards[1].rank } == 3) {
+            firstCard = arm.allCards[1]
+        }
+
+        // если нет тройки - выходим
+        if (firstCard == null) {
+            return false
+        }
+
+        // ищем еще пару или тройку
+        // опредяем позиции, где может находится вторая тройка или двойка
+        List<Integer> threePositions = []
+        List<Integer> potentialPositions = [0, 1, 2, 3, 4, 5, 6]
+        for (int i = 0; i < arm.allCards.size(); i++) {
+            if (arm.allCards[i].rank == firstCard.rank) {
+                threePositions.add(i)
+                potentialPositions.removeAll { t -> t == i }
+            }
+        }
+
+        // идем с конца и проверяем
+        for (int i = potentialPositions.size() - 1; i > 0; i--) {
+            if (arm.allCards.count { t -> t.rank == arm.allCards[i].rank } >= 2) {
+                secondCard = arm.allCards[i]
+                break
+            }
+        }
+
+        // если второй пары/тройки нет - выход
+        if (secondCard == null) {
+            return false
+        }
+
+        arm.combination = Combination.FULL_HOUSE
+
+        arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.firstCard.rank }.toList())
+        arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.secondCard.rank }.take(2).toList())
+
+        arm.firstCard = firstCard
+        arm.secondCard = secondCard
+
+        return true
     }
 
     boolean isFlush(Arm arm) {
@@ -270,5 +313,39 @@ class Poker {
         return false
     }
 
+    // проверка на классический стрит, надо обязательно 5 карт
+    private boolean checkClassicStraight(List<Card> allCards, Arm arm) {
+        if (allCards.size() != 5) {
+            throw new Exception("Poker. Incorrect size for straight")
+        }
 
+        if (allCards[4].rank.getNumber() - allCards[3].rank.getNumber() == 1 &&
+                allCards[3].rank.getNumber() - allCards[2].rank.getNumber() == 1 &&
+                allCards[2].rank.getNumber() - allCards[1].rank.getNumber() == 1 &&
+                allCards[1].rank.getNumber() - allCards[0].rank.getNumber() == 1) {
+            arm.comboCards = allCards
+            arm.firstCard = arm.comboCards.last()
+
+            fillNumberLists(arm)
+
+            return true
+        }
+
+        return false
+    }
+
+    // проверка на нижний стрит, надо любое число карт
+    private boolean checkLowerStraight(List<Card> allCards, Arm arm) {
+        if (allCards[0].rank == Rank.TWO && allCards[1].rank == Rank.THREE && allCards[2].rank == Rank.FOUR && allCards[3].rank == Rank.FIVE && allCards.last().rank == Rank.ACE) {
+            arm.comboCards = allCards.take(4)
+            arm.comboCards.add(allCards.last())
+            arm.firstCard = arm.comboCards[3]
+
+            fillNumberLists(arm)
+
+            return true
+        }
+
+        return false
+    }
 }
