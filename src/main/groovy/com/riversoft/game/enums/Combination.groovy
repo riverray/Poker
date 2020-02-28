@@ -1,5 +1,5 @@
 package com.riversoft.game.enums
 
 enum Combination {
-    HighCard, OnePair, TwoPair, Three, Straight, Flush, FullHouse, Four, StraightFlush, RoyalFlush
+    HIGH_CARD, ONE_PAIR, TWO_PAIR, THREE, STRAIGHT, FLUSH, FULL_HOUSE, FOUR, STRAIGHT_FLUSH, ROYAL_FLUSH
 }

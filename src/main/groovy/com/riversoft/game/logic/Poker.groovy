@@ -7,10 +7,8 @@ import com.riversoft.game.enums.Suit
 import com.riversoft.game.model.Arm
 import com.riversoft.game.model.Card
 
-import java.awt.RadialGradientPaint
-
 class Poker {
-    Random rand = new Random()
+    Random rand = new Random(1)
     List<Card> allCards = []
     List<Card> deck = []
 
@@ -77,6 +75,8 @@ class Poker {
     }
 
     void getCommonCards() {
+        commonCards.clear()
+
         for (int i = 0; i < 5; i++) {
             int index = rand.nextInt(deck.size())
             commonCards.add(deck[index])
@@ -120,6 +120,9 @@ class Poker {
     }
 
     private void fillNumberLists(Arm arm) {
+        arm.commonCardNumbers = []
+        arm.playerCardNumbers = []
+
         for (int i = 0; i < arm.cards.size(); i++) {
             if (arm.comboCards.any { t -> t == arm.cards[i] }) {
                 arm.playerCardNumbers.add(i)
@@ -139,7 +142,7 @@ class Poker {
 
             if (allFlushCards.size() >= 5 && allFlushCards[count - 5].rank == Rank.TEN) {
                 arm.comboCards = allFlushCards.drop(count - 5)
-                arm.combination = Combination.RoyalFlush
+                arm.combination = Combination.ROYAL_FLUSH
                 arm.firstCard = arm.comboCards.last()
 
                 fillNumberLists(arm)
@@ -151,12 +154,33 @@ class Poker {
     }
 
     boolean isStraightFlush(Arm arm) {
+        for (def suit : Suit.values()) {
+            def allFlushCards = arm.allCards.findAll { t -> t.suit == suit }.sort { t -> t.rank }
+            int count = allFlushCards.size()
+
+            if (count == 5 && checkStraight(allFlushCards, arm)) {
+                arm.combination = Combination.STRAIGHT_FLUSH
+            }
+        }
+        return false
+    }
+
+    private boolean checkStraight(List<Card> allCards, Arm arm) {
+        if (allCards[4].rank.getNumber() - allCards[0].rank.getNumber() == 4) {
+            arm.comboCards = allCards
+            arm.firstCard = arm.comboCards.last()
+
+            fillNumberLists(arm)
+
+            return true
+        }
+
         return false
     }
 
     boolean isFour(Arm arm) {
         if (arm.allCards.count { t -> t.rank == arm.allCards[3].rank } == 4) {
-            arm.combination = Combination.Four
+            arm.combination = Combination.FOUR
             arm.firstCard = arm.allCards[3]
 
             // определяем пятую карту комбинации
@@ -185,13 +209,14 @@ class Poker {
 
     boolean isFlush(Arm arm) {
         for (def suit : Suit.values()) {
-            def allFlushCards = allCards.findAll { t -> t.suit == suit }.sort()
+            def allFlushCards = arm.allCards.findAll { t -> t.suit == suit }.sort { t -> t.rank }
             int count = allFlushCards.size()
 
-            if (allFlushCards.size() >= 5) {
-                arm.combination = Combination.Flush
+            if (count >= 5) {
+                arm.combination = Combination.FLUSH
                 arm.comboCards = allFlushCards.drop(count - 5)
-                arm.firstCard = commonCards.last()
+                arm.firstCard = arm.comboCards[4]
+                arm.secondCard = arm.comboCards[3]
 
                 fillNumberLists(arm)
 

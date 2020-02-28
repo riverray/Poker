@@ -13,7 +13,7 @@ class Arm {
     Card secondCard
     Card thirdCard
 
-    Combination combination = Combination.HighCard
+    Combination combination = Combination.HIGH_CARD
 
     List<Integer> playerCardNumbers = []
     List<Integer> commonCardNumbers = []
