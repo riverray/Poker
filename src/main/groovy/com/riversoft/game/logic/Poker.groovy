@@ -157,8 +157,12 @@ class Poker {
             int count = allFlushCards.size()
 
             // проверка на классический стрит
-            if (count == 5 && checkClassicStraight(allFlushCards, arm) || count == 6 && checkClassicStraight(allFlushCards.drop(1), arm) || count == 6 && checkClassicStraight(allFlushCards.take(5), arm) ||
-                    count == 7 && checkClassicStraight(allFlushCards.drop(2), arm) || count == 7 && checkClassicStraight(allFlushCards.drop(1).take(5), arm) || count == 7 && checkClassicStraight(allFlushCards.take(5), arm)) {
+            if (count == 5 && checkClassicStraight(allFlushCards, arm) ||
+                    count == 6 && checkClassicStraight(allFlushCards.drop(1), arm) ||
+                    count == 6 && checkClassicStraight(allFlushCards.take(5), arm) ||
+                    count == 7 && checkClassicStraight(allFlushCards.drop(2), arm) ||
+                    count == 7 && checkClassicStraight(allFlushCards.drop(1).take(5), arm) ||
+                    count == 7 && checkClassicStraight(allFlushCards.take(5), arm)) {
                 arm.combination = Combination.STRAIGHT_FLUSH
 
                 return true
@@ -228,8 +232,8 @@ class Poker {
 
         // идем с конца и проверяем
         for (int i = potentialPositions.size() - 1; i > 0; i--) {
-            if (arm.allCards.count { t -> t.rank == arm.allCards[i].rank } >= 2) {
-                secondCard = arm.allCards[i]
+            if (arm.allCards.count { t -> t.rank == arm.allCards[potentialPositions[i]].rank } >= 2) {
+                secondCard = arm.allCards[potentialPositions[i]]
                 break
             }
         }
@@ -240,12 +244,11 @@ class Poker {
         }
 
         arm.combination = Combination.FULL_HOUSE
+        arm.firstCard = firstCard
+        arm.secondCard = secondCard
 
         arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.firstCard.rank }.toList())
         arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.secondCard.rank }.take(2).toList())
-
-        arm.firstCard = firstCard
-        arm.secondCard = secondCard
 
         return true
     }

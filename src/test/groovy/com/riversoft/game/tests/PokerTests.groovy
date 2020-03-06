@@ -277,7 +277,56 @@ class PokerTests extends Specification {
         game.arms[0].commonCardNumbers == [0, 2, 3] || [2, 3, 4]
     }
 
-    def "FullHouse"() {}
+    def "FullHouse"() {
+        given:
+        List<Long> banks = [100, 100, 100]
+        Poker game = new Poker()
+        def commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.KING), new Card(Suit.DIAMOND, Rank.FIVE), new Card(Suit.SPADE, Rank.FIVE), new Card(Suit.CLUB, Rank.KING)]
+        def playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.NINE)]
+
+        when:
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.FULL_HOUSE
+        game.arms[0].firstCard.rank == commonCards[0].rank
+        game.arms[0].secondCard == commonCards[4]
+        game.arms[0].playerCardNumbers == []
+        game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
+
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.QUEEN), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.SPADE, Rank.NINE)]
+        playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.NINE)]
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.FOUR
+        game.arms[0].firstCard.rank == commonCards[0].rank
+        game.arms[0].secondCard == commonCards[2]
+        game.arms[0].playerCardNumbers == [1]
+        game.arms[0].commonCardNumbers == [0, 2, 3, 4]
+
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.SPADE, Rank.NINE)]
+        playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.EIGHT)]
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.FOUR
+        game.arms[0].firstCard.rank == playerCards[0].rank
+        game.arms[0].secondCard.rank == commonCards[0].rank
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [0, 2, 3] || [2, 3, 4]
+    }
 
     def "Flush"() {
         given:
