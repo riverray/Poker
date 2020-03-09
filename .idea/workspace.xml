@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57b4e703-74ef-450b-9c4d-9b02aff7312d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -59,8 +59,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="283" column="17" selection-start-line="283" selection-start-column="17" selection-end-line="283" selection-end-column="17" />
+            <state>
               <folding>
                 <element signature="n#!!block;n#генерация всех кард#0;n#!!block;n#PokerTests#0" />
                 <element signature="n#!!block;n#генерация изначальной колоды#0;n#!!block;n#PokerTests#0" />
@@ -74,10 +73,27 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="49">
+              <caret line="120" selection-start-line="120" selection-end-line="120" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy" />
+        <option value="$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy" />
+      </list>
+    </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="2" />
@@ -108,6 +124,30 @@
               <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="logic" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
@@ -144,11 +184,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583776786731" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583778909573" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -162,9 +202,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PokerTests.FullHouse">
+  <component name="RunManager" selected="JUnit.PokerTests">
     <configuration name="PokerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Poker.test" />
+      <module name="org.example.Poker.test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.riversoft.game.tests.*" />
@@ -173,7 +213,9 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
       <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -247,8 +289,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PokerTests.FullHouse" />
         <item itemvalue="JUnit.PokerTests" />
+        <item itemvalue="JUnit.PokerTests.FullHouse" />
         <item itemvalue="JUnit.PokerTests.StraightFlush" />
         <item itemvalue="JUnit.PokerTests.RoyalFlush" />
         <item itemvalue="JUnit.PokerTests.Four" />
@@ -268,32 +310,67 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 19h 58m 03s.xml">
+      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 19h 58m 13s.xml">
+      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 19h 58m 35s.xml">
+      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 19h 59m 44s.xml">
+      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 19h 59m 49s.xml">
+      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 20h 02m 38s.xml">
+      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 20h 03m 12s.xml">
+      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 20h 04m 30s.xml">
+      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 20h 04m 37s.xml">
+      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerTests - 2020.03.09 at 20h 05m 11s.xml">
+      <configuration name="PokerTests" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
     <frame x="2" y="0" width="1918" height="1052" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14132762" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14132762" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.44127333" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.35016465" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Gradle" visible="true" weight="0.13115631" />
+      <window_info anchor="right" id="Gradle" visible="true" weight="0.08404711" />
       <window_info anchor="right" id="Theme Preview" />
       <window_info anchor="right" id="Maven" />
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Coverage" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -372,7 +449,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>377</line>
+          <line>363</line>
           <properties />
           <option name="timeStamp" value="49" />
         </line-breakpoint>
@@ -396,15 +473,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>296</line>
+          <line>298</line>
           <properties />
           <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>233</line>
-          <properties />
-          <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
@@ -413,37 +484,25 @@
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>206</line>
-          <properties />
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>290</line>
+          <line>311</line>
           <properties />
-          <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>241</line>
-          <properties />
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>287</line>
-          <properties />
-          <option name="timeStamp" value="70" />
+          <option name="timeStamp" value="74" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="120" selection-start-line="120" selection-end-line="120" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="283" column="17" selection-start-line="283" selection-start-column="17" selection-end-line="283" selection-end-column="17" />
+        <state>
           <folding>
             <element signature="n#!!block;n#генерация всех кард#0;n#!!block;n#PokerTests#0" />
             <element signature="n#!!block;n#генерация изначальной колоды#0;n#!!block;n#PokerTests#0" />
@@ -456,5 +515,80 @@
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>org.example.Poker</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Gradle: junit:junit:4.12</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

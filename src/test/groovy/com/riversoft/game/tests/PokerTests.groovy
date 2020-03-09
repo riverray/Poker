@@ -298,22 +298,7 @@ class PokerTests extends Specification {
         game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
 
         when:
-        commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.QUEEN), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.SPADE, Rank.NINE)]
-        playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.NINE)]
-        game.startGame(banks)
-        game.firstGame()
-        changeCards(game, commonCards, playerCards)
-        game.checkCombination(game.arms[0])
-
-        then:
-        game.arms[0].combination == Combination.FOUR
-        game.arms[0].firstCard.rank == commonCards[0].rank
-        game.arms[0].secondCard == commonCards[2]
-        game.arms[0].playerCardNumbers == [1]
-        game.arms[0].commonCardNumbers == [0, 2, 3, 4]
-
-        when:
-        commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.SPADE, Rank.NINE)]
+        commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.SPADE, Rank.NINE)]
         playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.EIGHT)]
         game.startGame(banks)
         game.firstGame()
@@ -321,11 +306,12 @@ class PokerTests extends Specification {
         game.checkCombination(game.arms[0])
 
         then:
-        game.arms[0].combination == Combination.FOUR
-        game.arms[0].firstCard.rank == playerCards[0].rank
-        game.arms[0].secondCard.rank == commonCards[0].rank
+        game.arms[0].combination == Combination.FULL_HOUSE
+        game.arms[0].firstCard.rank == commonCards[0].rank
+        game.arms[0].secondCard == commonCards[2]
         game.arms[0].playerCardNumbers == [0, 1]
-        game.arms[0].commonCardNumbers == [0, 2, 3] || [2, 3, 4]
+        game.arms[0].commonCardNumbers == [0, 3, 4]
+
     }
 
     def "Flush"() {
