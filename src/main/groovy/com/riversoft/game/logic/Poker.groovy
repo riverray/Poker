@@ -250,6 +250,8 @@ class Poker {
         arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.firstCard.rank }.toList())
         arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.secondCard.rank }.take(2).toList())
 
+        fillNumberLists(arm)
+
         return true
     }
 

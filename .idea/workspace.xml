@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="57b4e703-74ef-450b-9c4d-9b02aff7312d" name="Default Changelist" comment="" />
+    <list default="true" id="57b4e703-74ef-450b-9c4d-9b02aff7312d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Poker$PokerTests_FullHouse.ic" NAME="PokerTests.FullHouse Coverage Results" MODIFIED="1583776691730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.riversoft.game.tests.*</FILTER>
+    </SUITE>
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -43,10 +54,89 @@
       </state>
     </system>
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="283" column="17" selection-start-line="283" selection-start-column="17" selection-end-line="283" selection-end-column="17" />
+              <folding>
+                <element signature="n#!!block;n#генерация всех кард#0;n#!!block;n#PokerTests#0" />
+                <element signature="n#!!block;n#генерация изначальной колоды#0;n#!!block;n#PokerTests#0" />
+                <element signature="n#!!block;n#создаем стол#0;n#!!block;n#PokerTests#0" />
+                <element signature="n#!!block;n#делаем первую раздачу#0;n#!!block;n#PokerTests#0" />
+                <element signature="n#!!block;n#RoyalFlush#0;n#!!block;n#PokerTests#0" />
+                <element signature="n#!!block;n#StraightFlush#0;n#!!block;n#PokerTests#0" />
+                <element signature="n#!!block;n#Four#0;n#!!block;n#PokerTests#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="2" />
+    <option name="width" value="1918" />
+    <option name="height" value="1052" />
+  </component>
   <component name="ProjectId" id="1YKwkxnE9HlvNnwtpU0h1mSnKEQ" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -54,7 +144,23 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583776786731" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="JUnit.PokerTests.FullHouse">
     <configuration name="PokerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -89,17 +195,20 @@
       </method>
     </configuration>
     <configuration name="PokerTests.FullHouse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Poker.test" />
+      <module name="org.example.Poker.test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.riversoft.game.tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
       <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
       <option name="METHOD_NAME" value="FullHouse" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -159,6 +268,37 @@
     </task>
     <servers />
   </component>
+  <component name="ToolWindowManager">
+    <frame x="2" y="0" width="1918" height="1052" extended-state="0" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14132762" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Gradle" visible="true" weight="0.13115631" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
   <component name="WindowStateProjectService">
     <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1582880374075">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -215,69 +355,106 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
           <line>16</line>
+          <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
           <line>77</line>
+          <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
           <line>90</line>
+          <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
           <line>377</line>
+          <properties />
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
           <line>242</line>
+          <properties />
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
           <line>238</line>
+          <properties />
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
           <line>156</line>
+          <properties />
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>321</line>
+          <line>296</line>
+          <properties />
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
           <line>233</line>
+          <properties />
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>247</line>
+          <line>244</line>
+          <properties />
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
           <line>206</line>
+          <properties />
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
           <line>290</line>
+          <properties />
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
           <line>241</line>
+          <properties />
           <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
+          <line>287</line>
+          <properties />
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="283" column="17" selection-start-line="283" selection-start-column="17" selection-end-line="283" selection-end-column="17" />
+          <folding>
+            <element signature="n#!!block;n#генерация всех кард#0;n#!!block;n#PokerTests#0" />
+            <element signature="n#!!block;n#генерация изначальной колоды#0;n#!!block;n#PokerTests#0" />
+            <element signature="n#!!block;n#создаем стол#0;n#!!block;n#PokerTests#0" />
+            <element signature="n#!!block;n#делаем первую раздачу#0;n#!!block;n#PokerTests#0" />
+            <element signature="n#!!block;n#RoyalFlush#0;n#!!block;n#PokerTests#0" />
+            <element signature="n#!!block;n#StraightFlush#0;n#!!block;n#PokerTests#0" />
+            <element signature="n#!!block;n#Four#0;n#!!block;n#PokerTests#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
