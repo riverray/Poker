@@ -352,7 +352,35 @@ class Poker {
     }
 
     boolean isThree(Arm arm) {
-        return false
+        // проверяем на тройку
+        Card firstCard = null
+        Card secondCard = null
+
+        if (arm.allCards.count { t -> t.rank == arm.allCards[4].rank } == 3) {
+            firstCard = arm.allCards[4]
+        }
+        else if (arm.allCards.count { t -> t.rank == arm.allCards[1].rank } == 3) {
+            firstCard = arm.allCards[1]
+        }
+
+        // если нет тройки - выходим
+        if (firstCard == null) {
+            return false
+        }
+
+        // ищем две старшие карты из оставшихся
+        def twoCards = arm.allCards.findAll { t -> t.rank != firstCard.rank }.sort { t -> t.rank }.drop(2)
+
+        arm.combination = Combination.THREE
+        arm.firstCard = firstCard
+        arm.secondCard = twoCards.last()
+
+        arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.firstCard.rank }.toList())
+        arm.comboCards.addAll(twoCards)
+
+        fillNumberLists(arm)
+
+        return true
     }
 
     boolean isTwoPair(Arm arm) {

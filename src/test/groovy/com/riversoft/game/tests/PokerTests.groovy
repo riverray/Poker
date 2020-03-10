@@ -640,7 +640,26 @@ class PokerTests extends Specification {
         game.arms[0].commonCardNumbers == [0, 1, 2]
     }
 
-    def "Three"() {}
+    def "Three"() {
+        // тройка, все на столе
+        given:
+        List<Long> banks = [100, 100, 100]
+        Poker game = new Poker()
+        def commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.DIAMOND, Rank.FIVE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.SPADE, Rank.EIGHT), new Card(Suit.CLUB, Rank.SEVEN)]
+        def playerCards = [new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.DIAMOND, Rank.TWO)]
+
+        when:
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.THREE
+        game.arms[0].firstCard.rank == commonCards[0].rank
+        game.arms[0].playerCardNumbers == [0]
+        game.arms[0].commonCardNumbers == [0, 1, 2, 3]
+    }
 
     def "TwoPair"() {}
 
