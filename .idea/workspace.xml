@@ -68,7 +68,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
-  <component name="RunManager" selected="JUnit.PokerTests">
+  <component name="RunManager" selected="JUnit.PokerTests.Straight">
     <configuration name="PokerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Poker.test" />
       <extension name="coverage">
@@ -87,25 +87,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PokerTests.генерация всех кард" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Poker.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.riversoft.game.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH" value="11" />
-      <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
-      <option name="METHOD_NAME" value="генерация всех кард" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="PARAMETERS" value="" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PokerTests.Four" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PokerTests.Flush" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Poker.test" />
       <extension name="coverage">
         <pattern>
@@ -115,7 +97,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
       <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
-      <option name="METHOD_NAME" value="Four" />
+      <option name="METHOD_NAME" value="Flush" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -140,6 +122,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PokerTests.Straight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Poker.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.riversoft.game.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
+      <option name="METHOD_NAME" value="Straight" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PokerTests.StraightFlush" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Poker.test" />
       <extension name="coverage">
@@ -158,18 +156,18 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.PokerTests" />
-      <item itemvalue="JUnit.PokerTests.Four" />
       <item itemvalue="JUnit.PokerTests.FullHouse" />
+      <item itemvalue="JUnit.PokerTests.Flush" />
       <item itemvalue="JUnit.PokerTests.StraightFlush" />
-      <item itemvalue="JUnit.PokerTests.генерация всех кард" />
+      <item itemvalue="JUnit.PokerTests.Straight" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PokerTests.Straight" />
         <item itemvalue="JUnit.PokerTests" />
-        <item itemvalue="JUnit.PokerTests.FullHouse" />
-        <item itemvalue="JUnit.PokerTests.Four" />
-        <item itemvalue="JUnit.PokerTests.генерация всех кард" />
+        <item itemvalue="JUnit.PokerTests.Flush" />
         <item itemvalue="JUnit.PokerTests.StraightFlush" />
+        <item itemvalue="JUnit.PokerTests.FullHouse" />
       </list>
     </recent_temporary>
   </component>
@@ -219,38 +217,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583831700768" />
-    <state width="1877" height="360" key="GridCell.Tab.0.bottom" timestamp="1583834335583">
+    <state width="1877" height="377" key="GridCell.Tab.0.bottom" timestamp="1583852174432">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="360" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834335583" />
-    <state width="1877" height="360" key="GridCell.Tab.0.center" timestamp="1583834335582">
+    <state width="1877" height="377" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583852174432" />
+    <state width="1877" height="377" key="GridCell.Tab.0.center" timestamp="1583852174432">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="360" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834335582" />
-    <state width="1877" height="360" key="GridCell.Tab.0.left" timestamp="1583834335582">
+    <state width="1877" height="377" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583852174432" />
+    <state width="1877" height="377" key="GridCell.Tab.0.left" timestamp="1583852174432">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="360" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834335582" />
-    <state width="1877" height="360" key="GridCell.Tab.0.right" timestamp="1583834335582">
+    <state width="1877" height="377" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583852174432" />
+    <state width="1877" height="377" key="GridCell.Tab.0.right" timestamp="1583852174432">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="360" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834335582" />
-    <state width="1877" height="114" key="GridCell.Tab.1.bottom" timestamp="1583834138802">
+    <state width="1877" height="377" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583852174432" />
+    <state width="1877" height="377" key="GridCell.Tab.1.bottom" timestamp="1583852175617">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="114" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834138802" />
-    <state width="1877" height="114" key="GridCell.Tab.1.center" timestamp="1583834138802">
+    <state width="1877" height="377" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583852175617" />
+    <state width="1877" height="377" key="GridCell.Tab.1.center" timestamp="1583852175616">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="114" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834138802" />
-    <state width="1877" height="114" key="GridCell.Tab.1.left" timestamp="1583834138801">
+    <state width="1877" height="377" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583852175616" />
+    <state width="1877" height="377" key="GridCell.Tab.1.left" timestamp="1583852175616">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="114" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834138801" />
-    <state width="1877" height="114" key="GridCell.Tab.1.right" timestamp="1583834138802">
+    <state width="1877" height="377" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583852175616" />
+    <state width="1877" height="377" key="GridCell.Tab.1.right" timestamp="1583852175617">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="114" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834138802" />
+    <state width="1877" height="377" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583852175617" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1582711082133">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -280,16 +278,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>455</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>330</line>
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
           <line>315</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
@@ -307,6 +295,36 @@
           <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
           <line>272</line>
           <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
+          <line>529</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
+          <line>226</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
+          <line>142</line>
+          <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
+          <line>508</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
+          <line>604</line>
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
+          <line>344</line>
+          <option name="timeStamp" value="98" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

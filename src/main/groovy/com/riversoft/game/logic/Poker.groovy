@@ -8,7 +8,7 @@ import com.riversoft.game.model.Arm
 import com.riversoft.game.model.Card
 
 class Poker {
-    Random rand = new Random(1)
+    Random rand = new Random()
     List<Card> allCards = []
     List<Card> deck = []
 
@@ -309,33 +309,46 @@ class Poker {
 
     boolean isStraight(Arm arm) {
         // убрать повторные символы и проверить
-//        for (def suit : Suit.values()) {
-//            def allFlushCards = allCards.findAll { t -> t.suit == suit }.sort()
-//            int count = allFlushCards.size()
-//
-//            if (allFlushCards.size() >= 5) {
-//                arm.combination = Combination.Flush
-//
-//                // проверка на стрит туз-2-3-4-5
-//                if (allFlushCards[3].rank == Rank.FIVE && allFlushCards.last().rank == Rank.ACE) {
-//                    if (count == 7) {
-//                        allFlushCards.remove(4)
-//                        allFlushCards.remove(4)
-//                    }
-//                    else if (count == 6) {
-//                        allFlushCards.remove(4)
-//                    }
-//
-//                    arm.firstCard = allFlushCards[3]
-//                    arm.comboCards = allFlushCards
-//                }
-//                else {
-//                    arm.comboCards = allFlushCards.drop(count - 5)
-//                    arm.firstCard = allFlushCards.last()
-//                }
-//            }
-//        }
-        return false
+        List<Card> allFlushCards = []
+        for (def card : arm.allCards) {
+            if (!allFlushCards.any { t -> t.rank == card.rank }) {
+                allFlushCards.add(card)
+            }
+        }
+
+        int count = allFlushCards.size()
+        boolean straight = false
+
+        // проверка на классический стрит
+        if (count == 5 && checkClassicStraight(allFlushCards, arm) ||
+                count == 6 && checkClassicStraight(allFlushCards.drop(1), arm) ||
+                count == 6 && checkClassicStraight(allFlushCards.take(5), arm) ||
+                count == 7 && checkClassicStraight(allFlushCards.drop(2), arm) ||
+                count == 7 && checkClassicStraight(allFlushCards.drop(1).take(5), arm) ||
+                count == 7 && checkClassicStraight(allFlushCards.take(5), arm)) {
+            arm.combination = Combination.STRAIGHT
+
+            straight = true
+        }
+        // проверка на нижний стрит
+        if (count >= 5 && checkLowerStraight(allFlushCards, arm)) {
+            arm.combination = Combination.STRAIGHT
+
+            straight = true
+        }
+
+        // перезаполнение карт комбинации с преимуществом карт игрока
+        if (straight) {
+            for (int i = 0; i < arm.comboCards.size(); i++) {
+                int index = arm.cards.findIndexOf { t -> t.rank == arm.comboCards[i].rank }
+                if (index >= 0 && arm.cards[index].suit != arm.comboCards[i].suit) {
+                    arm.comboCards[i] = arm.cards[index]
+                }
+            }
+            111
+        }
+
+        return straight
     }
 
     boolean isThree(Arm arm) {

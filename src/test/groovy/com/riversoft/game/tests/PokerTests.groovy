@@ -407,11 +407,12 @@ class PokerTests extends Specification {
     }
 
     def "Flush"() {
+        // просто пять карт все на столе
         given:
         List<Long> banks = [100, 100, 100]
         Poker game = new Poker()
-        def commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.CLUB, Rank.TEN), new Card(Suit.CLUB, Rank.JACK), new Card(Suit.CLUB, Rank.KING)]
-        def playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.TWO)]
+        def commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.CLUB, Rank.JACK), new Card(Suit.CLUB, Rank.KING), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.CLUB, Rank.TEN)]
+        def playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.TWO)]
 
         when:
         game.startGame(banks)
@@ -421,11 +422,13 @@ class PokerTests extends Specification {
 
         then:
         game.arms[0].combination == Combination.FLUSH
-        game.arms[0].firstCard == commonCards[4]
+        game.arms[0].firstCard.rank == commonCards[2].rank
+        game.arms[0].secondCard.rank == commonCards[1].rank
         game.arms[0].comboCards.count { t -> t.suit == Suit.CLUB } == 5
         game.arms[0].playerCardNumbers == []
         game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
 
+        // 5 всего, одна у игрока
         when:
         commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.TEN), new Card(Suit.CLUB, Rank.JACK), new Card(Suit.CLUB, Rank.KING)]
         playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.TWO)]
@@ -442,6 +445,7 @@ class PokerTests extends Specification {
         game.arms[0].playerCardNumbers == [1]
         game.arms[0].commonCardNumbers == [0, 2, 3, 4]
 
+        // 5 всего, две у игрока
         when:
         commonCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.TEN), new Card(Suit.HEART, Rank.JACK), new Card(Suit.CLUB, Rank.KING)]
         playerCards = [new Card(Suit.HEART, Rank.TEN), new Card(Suit.HEART, Rank.QUEEN)]
@@ -457,9 +461,152 @@ class PokerTests extends Specification {
         game.arms[0].comboCards.count { t -> t.suit == Suit.HEART } == 5
         game.arms[0].playerCardNumbers == [0, 1]
         game.arms[0].commonCardNumbers == [0, 1, 3]
+
+        // 6 всего, у игрока младшая и в комбинацию не входит
+        when:
+        commonCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.HEART, Rank.KING), new Card(Suit.HEART, Rank.TEN), new Card(Suit.HEART, Rank.JACK)]
+        playerCards = [new Card(Suit.CLUB, Rank.TEN), new Card(Suit.HEART, Rank.THREE)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.FLUSH
+        game.arms[0].firstCard.rank == commonCards[2].rank
+        game.arms[0].secondCard.rank == commonCards[4].rank
+        game.arms[0].comboCards.count { t -> t.suit == Suit.HEART } == 5
+        game.arms[0].playerCardNumbers == []
+        game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
+
+        // 6 всего, у игрока одна и в комбинацию входит
+        when:
+        commonCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.HEART, Rank.KING), new Card(Suit.HEART, Rank.TEN), new Card(Suit.HEART, Rank.JACK)]
+        playerCards = [new Card(Suit.CLUB, Rank.TEN), new Card(Suit.HEART, Rank.QUEEN)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.FLUSH
+        game.arms[0].firstCard.rank == commonCards[2].rank
+        game.arms[0].secondCard.rank == playerCards[1].rank
+        game.arms[0].comboCards.count { t -> t.suit == Suit.HEART } == 5
+        game.arms[0].playerCardNumbers == [1]
+        game.arms[0].commonCardNumbers == [1, 2, 3, 4]
+
+        // 6 всего, у игрока две и они в комбинацию входят
+        when:
+        commonCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.HEART, Rank.KING), new Card(Suit.DIAMOND, Rank.SEVEN), new Card(Suit.HEART, Rank.JACK)]
+        playerCards = [new Card(Suit.HEART, Rank.TEN), new Card(Suit.HEART, Rank.QUEEN)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.FLUSH
+        game.arms[0].firstCard.rank == commonCards[2].rank
+        game.arms[0].secondCard.rank == playerCards[1].rank
+        game.arms[0].comboCards.count { t -> t.suit == Suit.HEART } == 5
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [1, 2, 4]
+
+        // 7 всего, у игрока две и они в комбинацию входят
+        when:
+        commonCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.HEART, Rank.KING), new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.HEART, Rank.JACK)]
+        playerCards = [new Card(Suit.HEART, Rank.TEN), new Card(Suit.HEART, Rank.QUEEN)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.FLUSH
+        game.arms[0].firstCard.rank == commonCards[2].rank
+        game.arms[0].secondCard.rank == playerCards[1].rank
+        game.arms[0].comboCards.count { t -> t.suit == Suit.HEART } == 5
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [1, 2, 4]
+
+        // 7 всего, у игрока две и они в комбинацию не входят
+        when:
+        commonCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.HEART, Rank.KING), new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.HEART, Rank.JACK)]
+        playerCards = [new Card(Suit.HEART, Rank.TWO), new Card(Suit.HEART, Rank.THREE)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.FLUSH
+        game.arms[0].firstCard.rank == commonCards[2].rank
+        game.arms[0].secondCard.rank == commonCards[4].rank
+        game.arms[0].comboCards.count { t -> t.suit == Suit.HEART } == 5
+        game.arms[0].playerCardNumbers == []
+        game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
+
+
     }
 
-    def "Straight"() {}
+    def "Straight"() {
+        // просто пять карт, все на столе, простой стрит
+        given:
+        List<Long> banks = [100, 100, 100]
+        Poker game = new Poker()
+        def commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.HEART, Rank.SIX), new Card(Suit.SPADE, Rank.EIGHT), new Card(Suit.CLUB, Rank.SEVEN)]
+        def playerCards = [new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.DIAMOND, Rank.TWO)]
+
+        when:
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.STRAIGHT
+        game.arms[0].firstCard.rank == commonCards[1].rank
+        game.arms[0].playerCardNumbers == []
+        game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
+
+        // просто пять карт, все на столе, нижний стрит
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.THREE), new Card(Suit.DIAMOND, Rank.ACE), new Card(Suit.CLUB, Rank.FOUR), new Card(Suit.HEART, Rank.TWO)]
+        playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.JACK)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.STRAIGHT
+        game.arms[0].firstCard.rank == commonCards[0].rank
+        game.arms[0].playerCardNumbers == []
+        game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
+
+        // просто пять карт, все на столе, нижний стрит
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.HEART, Rank.SIX), new Card(Suit.SPADE, Rank.EIGHT), new Card(Suit.CLUB, Rank.SEVEN)]
+        playerCards = [new Card(Suit.HEART, Rank.NINE), new Card(Suit.DIAMOND, Rank.TWO)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.STRAIGHT
+        game.arms[0].firstCard.rank == playerCards[1].rank
+        game.arms[0].playerCardNumbers == [0]
+        game.arms[0].commonCardNumbers == [0, 2, 3, 4]
+    }
 
     def "Three"() {}
 
