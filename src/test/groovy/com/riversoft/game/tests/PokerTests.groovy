@@ -95,6 +95,7 @@ class PokerTests extends Specification {
     //# region Combination
 
     def "RoyalFlush"() {
+        // все карты комбинации на столе
         given:
         List<Long> banks = [100, 100, 100]
         Poker game = new Poker()
@@ -114,6 +115,7 @@ class PokerTests extends Specification {
         game.arms[0].playerCardNumbers == []
         game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
 
+        // одна карта у игрока
         when:
         commonCards = [new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.HEART, Rank.ACE), new Card(Suit.HEART, Rank.TEN), new Card(Suit.HEART, Rank.JACK), new Card(Suit.HEART, Rank.KING)]
         playerCards = [new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.HEART, Rank.FIVE)]
@@ -128,6 +130,7 @@ class PokerTests extends Specification {
         game.arms[0].playerCardNumbers == [0]
         game.arms[0].commonCardNumbers == [1, 2, 3, 4]
 
+        // две карты у игрока
         when:
         commonCards = [new Card(Suit.SPADE, Rank.ACE), new Card(Suit.HEART, Rank.ACE), new Card(Suit.SPADE, Rank.JACK), new Card(Suit.SPADE, Rank.KING), new Card(Suit.HEART, Rank.KING)]
         playerCards = [new Card(Suit.SPADE, Rank.QUEEN), new Card(Suit.SPADE, Rank.TEN)]
@@ -144,6 +147,7 @@ class PokerTests extends Specification {
     }
 
     def "StraightFlush"() {
+        // все карты на столе
         given:
         List<Long> banks = [100, 100, 100]
         Poker game = new Poker()
@@ -163,6 +167,7 @@ class PokerTests extends Specification {
         game.arms[0].playerCardNumbers == []
         game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
 
+        // одна карта у игрока, 7 карт подряд
         when:
         commonCards = [new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.HEART, Rank.TEN), new Card(Suit.HEART, Rank.JACK), new Card(Suit.HEART, Rank.KING)]
         playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.HEART, Rank.NINE)]
@@ -177,6 +182,7 @@ class PokerTests extends Specification {
         game.arms[0].playerCardNumbers == [1]
         game.arms[0].commonCardNumbers == [1, 2, 3, 4]
 
+        // две карты у игрока,
         when:
         commonCards = [new Card(Suit.SPADE, Rank.JACK), new Card(Suit.SPADE, Rank.NINE), new Card(Suit.SPADE, Rank.EIGHT), new Card(Suit.SPADE, Rank.SIX), new Card(Suit.HEART, Rank.KING)]
         playerCards = [new Card(Suit.SPADE, Rank.QUEEN), new Card(Suit.SPADE, Rank.TEN)]
@@ -193,6 +199,7 @@ class PokerTests extends Specification {
         game.arms[0].playerCardNumbers == [0, 1]
         game.arms[0].commonCardNumbers == [0, 1, 2]
 
+        // две карты у игрока, нижний стрит
         when:
         commonCards = [new Card(Suit.SPADE, Rank.FIVE), new Card(Suit.SPADE, Rank.FOUR), new Card(Suit.SPADE, Rank.THREE), new Card(Suit.SPADE, Rank.KING), new Card(Suit.SPADE, Rank.TEN)]
         playerCards = [new Card(Suit.SPADE, Rank.TWO), new Card(Suit.SPADE, Rank.ACE)]
@@ -209,6 +216,7 @@ class PokerTests extends Specification {
         game.arms[0].playerCardNumbers == [0, 1]
         game.arms[0].commonCardNumbers == [0, 1, 2]
 
+        // одна карта у игрока, 5 подряд и туз, должен определиться стрит по шесть
         when:
         commonCards = [new Card(Suit.SPADE, Rank.FIVE), new Card(Suit.SPADE, Rank.FOUR), new Card(Suit.SPADE, Rank.THREE), new Card(Suit.SPADE, Rank.SIX), new Card(Suit.SPADE, Rank.TEN)]
         playerCards = [new Card(Suit.SPADE, Rank.TWO), new Card(Suit.SPADE, Rank.ACE)]
@@ -227,6 +235,7 @@ class PokerTests extends Specification {
     }
 
     def "Four"() {
+        // все карты на столе
         given:
         List<Long> banks = [100, 100, 100]
         Poker game = new Poker()
@@ -242,10 +251,11 @@ class PokerTests extends Specification {
         then:
         game.arms[0].combination == Combination.FOUR
         game.arms[0].firstCard.rank == commonCards[0].rank
-        game.arms[0].secondCard == commonCards[4]
+        game.arms[0].secondCard.rank == commonCards[4].rank
         game.arms[0].playerCardNumbers == []
         game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
 
+        // одна карта из четверки у игрока
         when:
         commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.QUEEN), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.SPADE, Rank.NINE)]
         playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.NINE)]
@@ -257,10 +267,11 @@ class PokerTests extends Specification {
         then:
         game.arms[0].combination == Combination.FOUR
         game.arms[0].firstCard.rank == commonCards[0].rank
-        game.arms[0].secondCard == commonCards[2]
+        game.arms[0].secondCard.rank == commonCards[2].rank
         game.arms[0].playerCardNumbers == [1]
         game.arms[0].commonCardNumbers == [0, 2, 3, 4]
 
+        // две карты из четверки у игрока. При этом есть еще одна пара, одна карта из которой входит к комбинацию как старшая из остающихся
         when:
         commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.SPADE, Rank.NINE)]
         playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.EIGHT)]
@@ -271,13 +282,46 @@ class PokerTests extends Specification {
 
         then:
         game.arms[0].combination == Combination.FOUR
-        game.arms[0].firstCard.rank == playerCards[0].rank
+        game.arms[0].firstCard.rank == playerCards[1].rank
         game.arms[0].secondCard.rank == commonCards[0].rank
         game.arms[0].playerCardNumbers == [0, 1]
-        game.arms[0].commonCardNumbers == [0, 2, 3] || [2, 3, 4]
+        game.arms[0].commonCardNumbers == [2, 3, 4]
+
+        // две карты (одна из четверки и старшая) у игрока
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.TWO), new Card(Suit.SPADE, Rank.NINE)]
+        playerCards = [new Card(Suit.HEART, Rank.KING), new Card(Suit.SPADE, Rank.EIGHT)]
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.FOUR
+        game.arms[0].firstCard.rank == playerCards[1].rank
+        game.arms[0].secondCard.rank == playerCards[0].rank
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [0, 1, 2]
+
+        // четыре и три, берется четыре и одна из трех
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.KING), new Card(Suit.SPADE, Rank.KING)]
+        playerCards = [new Card(Suit.HEART, Rank.KING), new Card(Suit.SPADE, Rank.EIGHT)]
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.FOUR
+        game.arms[0].firstCard.rank == commonCards[1].rank
+        game.arms[0].secondCard.rank == playerCards[0].rank
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [0, 1, 2]
     }
 
     def "FullHouse"() {
+        // все карты на столе
         given:
         List<Long> banks = [100, 100, 100]
         Poker game = new Poker()
@@ -293,10 +337,11 @@ class PokerTests extends Specification {
         then:
         game.arms[0].combination == Combination.FULL_HOUSE
         game.arms[0].firstCard.rank == commonCards[0].rank
-        game.arms[0].secondCard == commonCards[4]
+        game.arms[0].secondCard.rank == commonCards[4].rank
         game.arms[0].playerCardNumbers == []
         game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
 
+        // две тройки берется старшая и две карты из младшей, две карты у игрока
         when:
         commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.SPADE, Rank.NINE)]
         playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.EIGHT)]
@@ -308,10 +353,57 @@ class PokerTests extends Specification {
         then:
         game.arms[0].combination == Combination.FULL_HOUSE
         game.arms[0].firstCard.rank == commonCards[0].rank
-        game.arms[0].secondCard == commonCards[2]
+        game.arms[0].secondCard.rank == commonCards[2].rank
         game.arms[0].playerCardNumbers == [0, 1]
         game.arms[0].commonCardNumbers == [0, 3, 4]
 
+        // две тройки берется старшая и две карты из младшей, одна карта у игрока
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.SPADE, Rank.NINE)]
+        playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.FIVE)]
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.FULL_HOUSE
+        game.arms[0].firstCard.rank == commonCards[0].rank
+        game.arms[0].secondCard.rank == commonCards[2].rank
+        game.arms[0].playerCardNumbers == [0]
+        game.arms[0].commonCardNumbers == [0, 1, 3, 4]
+
+        // тройка и пара, одна карта пары у игрока
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.SPADE, Rank.NINE)]
+        playerCards = [new Card(Suit.HEART, Rank.KING), new Card(Suit.CLUB, Rank.EIGHT)]
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.FULL_HOUSE
+        game.arms[0].firstCard.rank == commonCards[2].rank
+        game.arms[0].secondCard.rank == commonCards[0].rank
+        game.arms[0].playerCardNumbers == [1]
+        game.arms[0].commonCardNumbers == [0, 2, 3, 4]
+
+        // тройка и пара, две карты пары у игрока
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.NINE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.SPADE, Rank.NINE)]
+        playerCards = [new Card(Suit.HEART, Rank.KING), new Card(Suit.CLUB, Rank.KING)]
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.FULL_HOUSE
+        game.arms[0].firstCard.rank == commonCards[0].rank
+        game.arms[0].secondCard.rank == playerCards[1].rank
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [0, 1, 4]
     }
 
     def "Flush"() {

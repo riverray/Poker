@@ -4,10 +4,6 @@
     <list default="true" id="57b4e703-74ef-450b-9c4d-9b02aff7312d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/.gradle/" />
-    <ignored path="$PROJECT_DIR$/build/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,129 +50,10 @@
       </state>
     </system>
   </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="n#!!block;n#генерация всех кард#0;n#!!block;n#PokerTests#0" />
-                <element signature="n#!!block;n#генерация изначальной колоды#0;n#!!block;n#PokerTests#0" />
-                <element signature="n#!!block;n#создаем стол#0;n#!!block;n#PokerTests#0" />
-                <element signature="n#!!block;n#делаем первую раздачу#0;n#!!block;n#PokerTests#0" />
-                <element signature="n#!!block;n#RoyalFlush#0;n#!!block;n#PokerTests#0" />
-                <element signature="n#!!block;n#StraightFlush#0;n#!!block;n#PokerTests#0" />
-                <element signature="n#!!block;n#Four#0;n#!!block;n#PokerTests#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="49">
-              <caret line="120" selection-start-line="120" selection-end-line="120" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy" />
-        <option value="$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="2" />
-    <option name="width" value="1918" />
-    <option name="height" value="1052" />
-  </component>
   <component name="ProjectId" id="1YKwkxnE9HlvNnwtpU0h1mSnKEQ" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="groovy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="groovy" type="462c0819:PsiDirectoryNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="groovy" type="462c0819:PsiDirectoryNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-              <item name="logic" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="groovy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="groovy" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-    </panes>
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -185,36 +62,44 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583778909573" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="JUnit.PokerTests">
     <configuration name="PokerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="org.example.Poker.test" />
+      <module name="Poker.test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.riversoft.game.tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
       <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PokerTests.генерация всех кард" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Poker.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.riversoft.game.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
+      <option name="METHOD_NAME" value="генерация всех кард" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -237,25 +122,6 @@
       </method>
     </configuration>
     <configuration name="PokerTests.FullHouse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="org.example.Poker.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.riversoft.game.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
-      <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
-      <option name="METHOD_NAME" value="FullHouse" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="PARAMETERS" value="" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PokerTests.RoyalFlush" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Poker.test" />
       <extension name="coverage">
         <pattern>
@@ -263,10 +129,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
       <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
-      <option name="METHOD_NAME" value="RoyalFlush" />
+      <option name="METHOD_NAME" value="FullHouse" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -287,13 +156,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.PokerTests" />
+      <item itemvalue="JUnit.PokerTests.Four" />
+      <item itemvalue="JUnit.PokerTests.FullHouse" />
+      <item itemvalue="JUnit.PokerTests.StraightFlush" />
+      <item itemvalue="JUnit.PokerTests.генерация всех кард" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PokerTests" />
         <item itemvalue="JUnit.PokerTests.FullHouse" />
-        <item itemvalue="JUnit.PokerTests.StraightFlush" />
-        <item itemvalue="JUnit.PokerTests.RoyalFlush" />
         <item itemvalue="JUnit.PokerTests.Four" />
+        <item itemvalue="JUnit.PokerTests.генерация всех кард" />
+        <item itemvalue="JUnit.PokerTests.StraightFlush" />
       </list>
     </recent_temporary>
   </component>
@@ -310,113 +186,71 @@
     </task>
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 19h 58m 03s.xml">
-      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 19h 58m 13s.xml">
-      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 19h 58m 35s.xml">
-      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 19h 59m 44s.xml">
-      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 19h 59m 49s.xml">
-      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 20h 02m 38s.xml">
-      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 20h 03m 12s.xml">
-      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 20h 04m 30s.xml">
-      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerTests_FullHouse - 2020.03.09 at 20h 04m 37s.xml">
-      <configuration name="PokerTests.FullHouse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerTests - 2020.03.09 at 20h 05m 11s.xml">
-      <configuration name="PokerTests" configurationId="JUnit" />
-    </history-entry>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="2" y="0" width="1918" height="1052" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14132762" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.44127333" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.35016465" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Gradle" visible="true" weight="0.08404711" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Coverage" side_tool="true" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-  </component>
   <component name="WindowStateProjectService">
+    <state x="557" y="163" key="#PokerTests" timestamp="1583824973568">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="557" y="159" key="#PokerTests.FullHouse" timestamp="1583831722575">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="557" y="159" key="#PokerTests.FullHouse/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583831722575" />
+    <state x="557" y="163" key="#PokerTests/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583824973568" />
+    <state x="552" y="179" key="#Project_Structure" timestamp="1583824982178">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="179" key="#Project_Structure/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583824982178" />
+    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583831707233">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583831707233" />
     <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1582880374075">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1582880374075" />
-    <state width="468" height="466" key="DebuggerActiveHint" timestamp="1583507217637">
+    <state x="689" y="305" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1583825146728">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="468" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583507217637" />
-    <state width="1877" height="186" key="GridCell.Tab.0.bottom" timestamp="1583507187015">
+    <state x="689" y="305" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583825146728" />
+    <state width="572" height="466" key="DebuggerActiveHint" timestamp="1583834119850">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="186" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583507187015" />
-    <state width="1877" height="186" key="GridCell.Tab.0.center" timestamp="1583507187015">
+    <state width="572" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834119850" />
+    <state x="740" y="262" key="FileChooserDialogImpl" timestamp="1583831700768">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="186" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583507187015" />
-    <state width="1877" height="186" key="GridCell.Tab.0.left" timestamp="1583507187015">
+    <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583831700768" />
+    <state width="1877" height="360" key="GridCell.Tab.0.bottom" timestamp="1583834335583">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="186" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583507187015" />
-    <state width="1877" height="186" key="GridCell.Tab.0.right" timestamp="1583507187015">
+    <state width="1877" height="360" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834335583" />
+    <state width="1877" height="360" key="GridCell.Tab.0.center" timestamp="1583834335582">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="186" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583507187015" />
-    <state width="1877" height="186" key="GridCell.Tab.1.bottom" timestamp="1583507188343">
+    <state width="1877" height="360" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834335582" />
+    <state width="1877" height="360" key="GridCell.Tab.0.left" timestamp="1583834335582">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="186" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583507188343" />
-    <state width="1877" height="186" key="GridCell.Tab.1.center" timestamp="1583507188343">
+    <state width="1877" height="360" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834335582" />
+    <state width="1877" height="360" key="GridCell.Tab.0.right" timestamp="1583834335582">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="186" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583507188343" />
-    <state width="1877" height="186" key="GridCell.Tab.1.left" timestamp="1583507188343">
+    <state width="1877" height="360" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834335582" />
+    <state width="1877" height="114" key="GridCell.Tab.1.bottom" timestamp="1583834138802">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="186" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583507188343" />
-    <state width="1877" height="186" key="GridCell.Tab.1.right" timestamp="1583507188343">
+    <state width="1877" height="114" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834138802" />
+    <state width="1877" height="114" key="GridCell.Tab.1.center" timestamp="1583834138802">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="186" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583507188343" />
+    <state width="1877" height="114" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834138802" />
+    <state width="1877" height="114" key="GridCell.Tab.1.left" timestamp="1583834138801">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="114" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834138801" />
+    <state width="1877" height="114" key="GridCell.Tab.1.right" timestamp="1583834138802">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="114" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583834138802" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1582711082133">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -432,163 +266,49 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
           <line>16</line>
-          <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
           <line>77</line>
-          <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
           <line>90</line>
-          <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>363</line>
-          <properties />
+          <line>455</line>
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>242</line>
-          <properties />
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>238</line>
-          <properties />
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>156</line>
-          <properties />
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>298</line>
-          <properties />
+          <line>330</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>244</line>
-          <properties />
-          <option name="timeStamp" value="66" />
+          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
+          <line>315</line>
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>311</line>
-          <properties />
-          <option name="timeStamp" value="74" />
+          <line>287</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
+          <line>366</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
+          <line>272</line>
+          <option name="timeStamp" value="83" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="120" selection-start-line="120" selection-end-line="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!block;n#генерация всех кард#0;n#!!block;n#PokerTests#0" />
-            <element signature="n#!!block;n#генерация изначальной колоды#0;n#!!block;n#PokerTests#0" />
-            <element signature="n#!!block;n#создаем стол#0;n#!!block;n#PokerTests#0" />
-            <element signature="n#!!block;n#делаем первую раздачу#0;n#!!block;n#PokerTests#0" />
-            <element signature="n#!!block;n#RoyalFlush#0;n#!!block;n#PokerTests#0" />
-            <element signature="n#!!block;n#StraightFlush#0;n#!!block;n#PokerTests#0" />
-            <element signature="n#!!block;n#Four#0;n#!!block;n#PokerTests#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>org.example.Poker</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Gradle: junit:junit:4.12</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

@@ -183,16 +183,36 @@ class Poker {
             arm.firstCard = arm.allCards[3]
 
             // определяем пятую карту комбинации
-            // если последняя карта принадлежие четверке - тогда третья и все следующие (четыре)
+            // если последняя карта принадлежие четверке - тогда третья и все следующие (четыре). При этом проверяем, чтобы взяять по возможности карту игрока
             if (arm.allCards[6].rank == arm.firstCard.rank) {
-                arm.comboCards = arm.allCards.drop(2)
-                arm.secondCard = arm.allCards[2]
+                arm.comboCards = arm.allCards.drop(3)
+
+                int index = arm.cards.findIndexOf { t -> t.rank == arm.allCards[2].rank }
+                if (index >= 0) {
+                    arm.comboCards.add(arm.cards[index])
+                    arm.secondCard = arm.cards[index]
+                }
+                else {
+                    arm.comboCards.add(arm.allCards[2])
+                    arm.secondCard = arm.allCards[2]
+                }
             }
             // если нет - тогда это последняя карта (плюс вся четверка)
             else {
                 arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.firstCard.rank }.toList())
-                arm.comboCards.add(arm.allCards[6])
-                arm.secondCard = arm.allCards[6]
+
+                int index = arm.cards.findIndexOf { t -> t.rank == arm.allCards[6].rank }
+                if (index >= 0) {
+                    arm.comboCards.add(arm.cards[index])
+                    arm.secondCard = arm.cards[index]
+                }
+                else {
+                    arm.comboCards.add(arm.allCards[6])
+                    arm.secondCard = arm.allCards[6]
+                }
+
+//                arm.comboCards.add(arm.allCards[6])
+//                arm.secondCard = arm.allCards[6]
             }
 
             fillNumberLists(arm)
@@ -233,6 +253,7 @@ class Poker {
         // идем с конца и проверяем
         for (int i = potentialPositions.size() - 1; i > 0; i--) {
             if (arm.allCards.count { t -> t.rank == arm.allCards[potentialPositions[i]].rank } >= 2) {
+                // проверим, возможно пара из второй тройки есть у игрока
                 secondCard = arm.allCards[potentialPositions[i]]
                 break
             }
@@ -248,7 +269,18 @@ class Poker {
         arm.secondCard = secondCard
 
         arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.firstCard.rank }.toList())
-        arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.secondCard.rank }.take(2).toList())
+        // проверим сколько у игрока и в зависимости от этого, берем карты в комбинацию
+        int count = arm.cards.count { t -> t.rank == arm.secondCard.rank }
+        if (count == 2) {
+            arm.comboCards.addAll(arm.cards.toList())
+        }
+        else if (count == 1) {
+            arm.comboCards.add(arm.cards.find { t -> t.rank == arm.secondCard.rank })
+            arm.comboCards.addAll(commonCards.findAll { t -> t.rank == arm.secondCard.rank }.take(1))
+        }
+        else {
+            arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.secondCard.rank }.take(2).toList())
+        }
 
         fillNumberLists(arm)
 
