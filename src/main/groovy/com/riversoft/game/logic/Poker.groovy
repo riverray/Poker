@@ -331,7 +331,7 @@ class Poker {
             straight = true
         }
         // проверка на нижний стрит
-        if (count >= 5 && checkLowerStraight(allFlushCards, arm)) {
+        if (!straight && count >= 5 && checkLowerStraight(allFlushCards, arm)) {
             arm.combination = Combination.STRAIGHT
 
             straight = true
