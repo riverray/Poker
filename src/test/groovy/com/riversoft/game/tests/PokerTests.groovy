@@ -659,9 +659,112 @@ class PokerTests extends Specification {
         game.arms[0].firstCard.rank == commonCards[0].rank
         game.arms[0].playerCardNumbers == [0]
         game.arms[0].commonCardNumbers == [0, 1, 2, 3]
+
+        // одна карта у игрока
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.DIAMOND, Rank.FOUR), new Card(Suit.CLUB, Rank.SEVEN), new Card(Suit.HEART, Rank.TWO)]
+        playerCards = [new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.CLUB, Rank.SIX)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.THREE
+        game.arms[0].firstCard.rank == playerCards[0].rank
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [0, 1, 3]
+
+        // две карты у игрока
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.DIAMOND, Rank.ACE), new Card(Suit.CLUB, Rank.QUEEN), new Card(Suit.HEART, Rank.TWO)]
+        playerCards = [new Card(Suit.HEART, Rank.ACE), new Card(Suit.CLUB, Rank.ACE)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.THREE
+        game.arms[0].firstCard.rank == playerCards[0].rank
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [1, 2, 3]
     }
 
-    def "TwoPair"() {}
+    def "TwoPair"() {
+        // две пары тройка, все на столе
+        given:
+        List<Long> banks = [100, 100, 100]
+        Poker game = new Poker()
+        def commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.DIAMOND, Rank.QUEEN), new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.SPADE, Rank.ACE), new Card(Suit.CLUB, Rank.FIVE)]
+        def playerCards = [new Card(Suit.HEART, Rank.KING), new Card(Suit.DIAMOND, Rank.TWO)]
+
+        when:
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.TWO_PAIR
+        game.arms[0].firstCard.rank == commonCards[1].rank
+        game.arms[0].secondCard.rank == commonCards[0].rank
+        game.arms[0].playerCardNumbers == []
+        game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
+
+        // 2 пары, одна пара у игрока
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.DIAMOND, Rank.FOUR), new Card(Suit.CLUB, Rank.KING), new Card(Suit.HEART, Rank.TWO)]
+        playerCards = [new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.CLUB, Rank.SEVEN)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.TWO_PAIR
+        game.arms[0].firstCard.rank == playerCards[0].rank
+        game.arms[0].secondCard.rank == commonCards[0].rank
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [0, 1, 3]
+
+        // две карты у игрока
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.DIAMOND, Rank.ACE), new Card(Suit.CLUB, Rank.QUEEN), new Card(Suit.HEART, Rank.TWO)]
+        playerCards = [new Card(Suit.HEART, Rank.ACE), new Card(Suit.CLUB, Rank.QUEEN)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.TWO_PAIR
+        game.arms[0].firstCard.rank == playerCards[0].rank
+        game.arms[0].secondCard.rank == playerCards[1].rank
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [1, 2, 3]
+
+        // три пары, все реальные на столе
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.DIAMOND, Rank.ACE), new Card(Suit.CLUB, Rank.QUEEN), new Card(Suit.HEART, Rank.QUEEN)]
+        playerCards = [new Card(Suit.HEART, Rank.THREE), new Card(Suit.CLUB, Rank.THREE)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.TWO_PAIR
+        game.arms[0].firstCard.rank == commonCards[3].rank
+        game.arms[0].secondCard.rank == commonCards[0].rank
+        game.arms[0].playerCardNumbers == []
+        game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
+    }
 
     def "Pair"() {}
 

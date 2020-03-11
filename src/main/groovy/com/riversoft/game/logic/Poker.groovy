@@ -354,7 +354,6 @@ class Poker {
     boolean isThree(Arm arm) {
         // проверяем на тройку
         Card firstCard = null
-        Card secondCard = null
 
         if (arm.allCards.count { t -> t.rank == arm.allCards[4].rank } == 3) {
             firstCard = arm.allCards[4]
@@ -384,7 +383,66 @@ class Poker {
     }
 
     boolean isTwoPair(Arm arm) {
-        return false
+        // проверяем на старшую пару
+        Card firstCard = null
+        Card secondCard = null
+
+        if (arm.allCards.count { t -> t.rank == arm.allCards[5].rank } == 2) {
+            firstCard = arm.allCards[5]
+        }
+        else if (arm.allCards.count { t -> t.rank == arm.allCards[3].rank } == 2) {
+            firstCard = arm.allCards[3]
+        }
+
+        // если нет первой пары - выходим
+        if (firstCard == null) {
+            return false
+        }
+
+        // отбираем оставшиеся карты
+        def otherCards = arm.allCards.findAll { t -> t.rank != firstCard.rank }.sort { t -> t.rank }
+
+        // ищем вторую пару
+        if (otherCards.count { t -> t.rank == arm.allCards[3].rank } == 2) {
+            secondCard = arm.allCards[3]
+        }
+        else if (otherCards.count { t -> t.rank == arm.allCards[1].rank } == 2) {
+            secondCard = arm.allCards[1]
+        }
+
+        // если нет второй пары - выходим
+        if (secondCard == null) {
+            return false
+        }
+
+        arm.combination = Combination.TWO_PAIR
+        arm.firstCard = firstCard
+        arm.secondCard = secondCard
+
+        // оставляем карты
+        otherCards = otherCards.findAll { t -> t.rank != secondCard.rank }.sort { t -> t.rank }
+
+        // заносим пары в комбинацию
+        arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.firstCard.rank }.toList())
+        arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.secondCard.rank }.toList())
+
+        // добавляем пятую карту (может быть третья пара, тогда надо проверить и взять ту, что у игрока)
+        // нет третьей пары или есть третья пара, но у игрока ее нет
+        if (otherCards[2].rank != otherCards[1].rank || otherCards[2].rank == otherCards[1].rank && !arm.cards.any { t -> t.rank == otherCards[2].rank }) {
+            arm.comboCards.add(otherCards[2])
+        }
+        // есть третья пара, и хотя бы одна карта у игрока
+        else {
+            int index = arm.cards.findIndexOf { t -> t.rank == otherCards[2].rank }
+            if (index >= 0) {
+                arm.comboCards.add(arm.cards[index])
+            }
+
+        }
+
+        fillNumberLists(arm)
+
+        return true
     }
 
     boolean isOnePair(Arm arm) {
