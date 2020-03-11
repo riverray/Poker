@@ -64,10 +64,44 @@ class Poker {
         }
     }
 
-    void call(int armNumber, long amount) {
+    RetModel call(int armNumber, long amount) {
         if (arms.size() > 0 && armNumber <= arms.size()) {
             arms[armNumber - 1].status = Status.CALL
             arms[armNumber - 1].bet += amount
+        }
+
+        boolean nextLevel = true
+        int bet = arms[0].bet
+        for (def arm : arms) {
+            if (arm.bet != bet) {
+                nextLevel = false
+            }
+        }
+
+        if (!nextLevel) {
+            return new RetModel(
+                    stage: Stage.PRE_FLOP,
+                    allBank: arms.sum { t -> t.bet },
+                    buttonNumber: buttonNumber,
+                    arms: arms.collect()
+            )
+        }
+        else {
+            // раздаем общие карты
+            getCommonCards()
+
+            // заполняем карты рук
+            for (def arm : arms) {
+                fillAllCards(arm)
+            }
+
+            return new RetModel(
+                    stage: Stage.FLOP,
+                    allBank: arms.sum { t -> t.bet },
+                    buttonNumber: buttonNumber,
+                    arms: arms.collect(),
+                    commonCards: commonCards.collect()
+            )
         }
     }
 
@@ -91,8 +125,8 @@ class Poker {
     RetModel firstGame() {
         shuffleDeck()
 
-        // раздаем карты на стол
-        getCommonCards()
+//        // раздаем карты на стол
+//        getCommonCards()
 
         // раздаем карты игрокам, которые в статусе "готов"
         for (def arm : arms) {
@@ -104,7 +138,7 @@ class Poker {
 
             // получаем карты игроков
             getArmCards(arm)
-            fillAllCards(arm)
+//            fillAllCards(arm)
 
 //            checkCombination(arm)
         }

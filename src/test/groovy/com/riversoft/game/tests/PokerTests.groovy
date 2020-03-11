@@ -90,7 +90,6 @@ class PokerTests extends Specification {
 
         then:
         game.arms.size() == banks.size()
-        game.commonCards.size() == 5
     }
 
     //# region Combination
