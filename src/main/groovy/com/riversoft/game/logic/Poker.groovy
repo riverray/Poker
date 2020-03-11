@@ -2,6 +2,7 @@ package com.riversoft.game.logic
 
 import com.riversoft.game.enums.Combination
 import com.riversoft.game.enums.Rank
+import com.riversoft.game.enums.Stage
 import com.riversoft.game.enums.Status
 import com.riversoft.game.enums.Suit
 import com.riversoft.game.model.Arm
@@ -99,6 +100,8 @@ class Poker {
                 continue
             }
 
+            arm.status = Status.PRE_FLOP
+
             // получаем карты игроков
             getArmCards(arm)
             fillAllCards(arm)
@@ -106,18 +109,32 @@ class Poker {
 //            checkCombination(arm)
         }
 
-        return new RetModel()
+        // снимаем блайнды
+        int smallBlindIndex = buttonNumber + 1 < arms.size() ? buttonNumber + 1 : 0
+        int bigBlindIndex = smallBlindIndex + 1 < arms.size() ? smallBlindIndex + 1 : 0
 
+        arms[smallBlindIndex].bet = blaindSize
+        arms[smallBlindIndex].status = Status.SMALL_BLIND
 
-        111
+        arms[bigBlindIndex].bet = 2 * blaindSize
+        arms[bigBlindIndex].status = Status.BIG_BLIND
+
+        return new RetModel(
+                stage: Stage.PRE_FLOP,
+                allBank: 3 * blaindSize,
+                buttonNumber: buttonNumber,
+                arms: arms.collect()
+        )
     }
 
+    // заполнение списка всех карт
     private void fillAllCards(Arm arm) {
         arm.allCards.addAll(arm.cards)
         arm.allCards.addAll(commonCards)
         arm.allCards.sort { t -> t.rank }
     }
 
+    // заполнение карт руки
     void getArmCards(Arm arm) {
         for (int i = 0; i < 2; i++) {
             int index = rand.nextInt(deck.size())
@@ -126,6 +143,7 @@ class Poker {
         }
     }
 
+    // заполнение общих карт
     void getCommonCards() {
         commonCards.clear()
 
@@ -136,6 +154,7 @@ class Poker {
         }
     }
 
+    // проверка комбинаций после открытия всех семи карт
     void checkCombination(Arm arm) {
         arm.playerCardNumbers = []
         arm.commonCardNumbers = []

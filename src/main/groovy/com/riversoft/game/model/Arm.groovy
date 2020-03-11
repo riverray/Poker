@@ -8,7 +8,7 @@ import groovy.transform.ToString
 class Arm {
     List<Card> cards = [] // две карты игрока
     List<Card> allCards = [] // все карты с учетом общих (семь)
-    List<Card> comboCards = [] // карты, составляющие кобинацию (пять)
+    List<Card> comboCards = [] // карты, составляющие комбинацию (пять)
     Card firstCard
     Card secondCard
     Card thirdCard

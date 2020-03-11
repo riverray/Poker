@@ -8,6 +8,7 @@ import com.riversoft.game.model.Card
 import spock.lang.Specification
 
 class PokerTests extends Specification {
+    int blaindSize = 2
 
     def "генерация всех кард"() {
         when:
@@ -72,7 +73,7 @@ class PokerTests extends Specification {
         Poker game = new Poker()
 
         when:
-        game.startGame(banks)
+        game.startGame(banks, blaindSize)
 
         then:
         game.arms.size() == banks.size()
@@ -84,8 +85,8 @@ class PokerTests extends Specification {
         Poker game = new Poker()
 
         when:
-        game.startGame(banks)
-        game.firstGame()
+        game.startGame(banks, blaindSize)
+        def model = game.firstGame()
 
         then:
         game.arms.size() == banks.size()
@@ -103,7 +104,7 @@ class PokerTests extends Specification {
         def playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.NINE)]
 
         when:
-        game.startGame(banks)
+        game.startGame(banks, blaindSize)
         game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
@@ -155,7 +156,7 @@ class PokerTests extends Specification {
         def playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.FIVE)]
 
         when:
-        game.startGame(banks)
+        game.startGame(banks, blaindSize)
         game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
@@ -187,8 +188,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.SPADE, Rank.JACK), new Card(Suit.SPADE, Rank.NINE), new Card(Suit.SPADE, Rank.EIGHT), new Card(Suit.SPADE, Rank.SIX), new Card(Suit.HEART, Rank.KING)]
         playerCards = [new Card(Suit.SPADE, Rank.QUEEN), new Card(Suit.SPADE, Rank.TEN)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -204,8 +203,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.SPADE, Rank.FIVE), new Card(Suit.SPADE, Rank.FOUR), new Card(Suit.SPADE, Rank.THREE), new Card(Suit.SPADE, Rank.KING), new Card(Suit.SPADE, Rank.TEN)]
         playerCards = [new Card(Suit.SPADE, Rank.TWO), new Card(Suit.SPADE, Rank.ACE)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -221,8 +218,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.SPADE, Rank.FIVE), new Card(Suit.SPADE, Rank.FOUR), new Card(Suit.SPADE, Rank.THREE), new Card(Suit.SPADE, Rank.SIX), new Card(Suit.SPADE, Rank.TEN)]
         playerCards = [new Card(Suit.SPADE, Rank.TWO), new Card(Suit.SPADE, Rank.ACE)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -243,7 +238,7 @@ class PokerTests extends Specification {
         def playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.NINE)]
 
         when:
-        game.startGame(banks)
+        game.startGame(banks, blaindSize)
         game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
@@ -259,8 +254,7 @@ class PokerTests extends Specification {
         when:
         commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.QUEEN), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.SPADE, Rank.NINE)]
         playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.NINE)]
-        game.startGame(banks)
-        game.firstGame()
+
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -275,8 +269,7 @@ class PokerTests extends Specification {
         when:
         commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.SPADE, Rank.NINE)]
         playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.EIGHT)]
-        game.startGame(banks)
-        game.firstGame()
+
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -291,8 +284,7 @@ class PokerTests extends Specification {
         when:
         commonCards = [new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.TWO), new Card(Suit.SPADE, Rank.NINE)]
         playerCards = [new Card(Suit.HEART, Rank.KING), new Card(Suit.SPADE, Rank.EIGHT)]
-        game.startGame(banks)
-        game.firstGame()
+
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -307,8 +299,7 @@ class PokerTests extends Specification {
         when:
         commonCards = [new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.KING), new Card(Suit.SPADE, Rank.KING)]
         playerCards = [new Card(Suit.HEART, Rank.KING), new Card(Suit.SPADE, Rank.EIGHT)]
-        game.startGame(banks)
-        game.firstGame()
+
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -329,7 +320,7 @@ class PokerTests extends Specification {
         def playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.NINE)]
 
         when:
-        game.startGame(banks)
+        game.startGame(banks, blaindSize)
         game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
@@ -345,8 +336,7 @@ class PokerTests extends Specification {
         when:
         commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.SPADE, Rank.NINE)]
         playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.EIGHT)]
-        game.startGame(banks)
-        game.firstGame()
+
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -361,8 +351,7 @@ class PokerTests extends Specification {
         when:
         commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.SPADE, Rank.NINE)]
         playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.FIVE)]
-        game.startGame(banks)
-        game.firstGame()
+
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -377,8 +366,7 @@ class PokerTests extends Specification {
         when:
         commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.SPADE, Rank.NINE)]
         playerCards = [new Card(Suit.HEART, Rank.KING), new Card(Suit.CLUB, Rank.EIGHT)]
-        game.startGame(banks)
-        game.firstGame()
+
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -393,8 +381,7 @@ class PokerTests extends Specification {
         when:
         commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.HEART, Rank.NINE), new Card(Suit.CLUB, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.EIGHT), new Card(Suit.SPADE, Rank.NINE)]
         playerCards = [new Card(Suit.HEART, Rank.KING), new Card(Suit.CLUB, Rank.KING)]
-        game.startGame(banks)
-        game.firstGame()
+
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -415,7 +402,7 @@ class PokerTests extends Specification {
         def playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.DIAMOND, Rank.TWO)]
 
         when:
-        game.startGame(banks)
+        game.startGame(banks, blaindSize)
         game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
@@ -433,8 +420,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.TEN), new Card(Suit.CLUB, Rank.JACK), new Card(Suit.CLUB, Rank.KING)]
         playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.TWO)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -450,8 +435,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.TEN), new Card(Suit.HEART, Rank.JACK), new Card(Suit.CLUB, Rank.KING)]
         playerCards = [new Card(Suit.HEART, Rank.TEN), new Card(Suit.HEART, Rank.QUEEN)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -467,8 +450,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.HEART, Rank.KING), new Card(Suit.HEART, Rank.TEN), new Card(Suit.HEART, Rank.JACK)]
         playerCards = [new Card(Suit.CLUB, Rank.TEN), new Card(Suit.HEART, Rank.THREE)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -485,8 +466,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.HEART, Rank.KING), new Card(Suit.HEART, Rank.TEN), new Card(Suit.HEART, Rank.JACK)]
         playerCards = [new Card(Suit.CLUB, Rank.TEN), new Card(Suit.HEART, Rank.QUEEN)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -503,8 +482,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.HEART, Rank.KING), new Card(Suit.DIAMOND, Rank.SEVEN), new Card(Suit.HEART, Rank.JACK)]
         playerCards = [new Card(Suit.HEART, Rank.TEN), new Card(Suit.HEART, Rank.QUEEN)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -521,8 +498,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.HEART, Rank.KING), new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.HEART, Rank.JACK)]
         playerCards = [new Card(Suit.HEART, Rank.TEN), new Card(Suit.HEART, Rank.QUEEN)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -539,8 +514,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.HEART, Rank.KING), new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.HEART, Rank.JACK)]
         playerCards = [new Card(Suit.HEART, Rank.TWO), new Card(Suit.HEART, Rank.THREE)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -564,7 +537,7 @@ class PokerTests extends Specification {
         def playerCards = [new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.DIAMOND, Rank.TWO)]
 
         when:
-        game.startGame(banks)
+        game.startGame(banks, blaindSize)
         game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
@@ -580,8 +553,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.THREE), new Card(Suit.DIAMOND, Rank.ACE), new Card(Suit.CLUB, Rank.FOUR), new Card(Suit.HEART, Rank.TWO)]
         playerCards = [new Card(Suit.HEART, Rank.EIGHT), new Card(Suit.CLUB, Rank.JACK)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -596,8 +567,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.HEART, Rank.SIX), new Card(Suit.SPADE, Rank.EIGHT), new Card(Suit.CLUB, Rank.SEVEN)]
         playerCards = [new Card(Suit.HEART, Rank.NINE), new Card(Suit.DIAMOND, Rank.TWO)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -612,8 +581,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.SIX), new Card(Suit.DIAMOND, Rank.NINE), new Card(Suit.HEART, Rank.TEN), new Card(Suit.SPADE, Rank.EIGHT), new Card(Suit.CLUB, Rank.SEVEN)]
         playerCards = [new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.DIAMOND, Rank.JACK)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -628,8 +595,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.THREE), new Card(Suit.DIAMOND, Rank.FOUR), new Card(Suit.CLUB, Rank.ACE), new Card(Suit.HEART, Rank.TWO)]
         playerCards = [new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.CLUB, Rank.SIX)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -649,7 +614,7 @@ class PokerTests extends Specification {
         def playerCards = [new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.DIAMOND, Rank.TWO)]
 
         when:
-        game.startGame(banks)
+        game.startGame(banks, blaindSize)
         game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
@@ -665,8 +630,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.DIAMOND, Rank.FOUR), new Card(Suit.CLUB, Rank.SEVEN), new Card(Suit.HEART, Rank.TWO)]
         playerCards = [new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.CLUB, Rank.SIX)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -681,8 +644,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.DIAMOND, Rank.ACE), new Card(Suit.CLUB, Rank.QUEEN), new Card(Suit.HEART, Rank.TWO)]
         playerCards = [new Card(Suit.HEART, Rank.ACE), new Card(Suit.CLUB, Rank.ACE)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -702,7 +663,7 @@ class PokerTests extends Specification {
         def playerCards = [new Card(Suit.HEART, Rank.KING), new Card(Suit.DIAMOND, Rank.TWO)]
 
         when:
-        game.startGame(banks)
+        game.startGame(banks, blaindSize)
         game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
@@ -719,8 +680,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.DIAMOND, Rank.FOUR), new Card(Suit.CLUB, Rank.KING), new Card(Suit.HEART, Rank.TWO)]
         playerCards = [new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.CLUB, Rank.SEVEN)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -736,8 +695,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.SEVEN), new Card(Suit.DIAMOND, Rank.ACE), new Card(Suit.CLUB, Rank.QUEEN), new Card(Suit.HEART, Rank.TWO)]
         playerCards = [new Card(Suit.HEART, Rank.ACE), new Card(Suit.CLUB, Rank.QUEEN)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -753,8 +710,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.FIVE), new Card(Suit.HEART, Rank.FIVE), new Card(Suit.DIAMOND, Rank.ACE), new Card(Suit.CLUB, Rank.QUEEN), new Card(Suit.HEART, Rank.QUEEN)]
         playerCards = [new Card(Suit.HEART, Rank.THREE), new Card(Suit.CLUB, Rank.THREE)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -775,7 +730,7 @@ class PokerTests extends Specification {
         def playerCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.DIAMOND, Rank.TWO)]
 
         when:
-        game.startGame(banks)
+        game.startGame(banks, blaindSize)
         game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
@@ -792,8 +747,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.THREE), new Card(Suit.DIAMOND, Rank.QUEEN), new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.SPADE, Rank.ACE), new Card(Suit.CLUB, Rank.EIGHT)]
         playerCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.DIAMOND, Rank.JACK)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -809,8 +762,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.THREE), new Card(Suit.DIAMOND, Rank.QUEEN), new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.SPADE, Rank.FOUR), new Card(Suit.CLUB, Rank.EIGHT)]
         playerCards = [new Card(Suit.HEART, Rank.NINE), new Card(Suit.DIAMOND, Rank.JACK)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -826,8 +777,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.THREE), new Card(Suit.DIAMOND, Rank.JACK), new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.SPADE, Rank.FOUR), new Card(Suit.CLUB, Rank.EIGHT)]
         playerCards = [new Card(Suit.HEART, Rank.NINE), new Card(Suit.DIAMOND, Rank.NINE)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
@@ -843,8 +792,6 @@ class PokerTests extends Specification {
         commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.DIAMOND, Rank.JACK), new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.SPADE, Rank.FOUR), new Card(Suit.CLUB, Rank.EIGHT)]
         playerCards = [new Card(Suit.HEART, Rank.ACE), new Card(Suit.DIAMOND, Rank.NINE)]
 
-        game.startGame(banks)
-        game.firstGame()
         changeCards(game, commonCards, playerCards)
         game.checkCombination(game.arms[0])
 
