@@ -766,7 +766,95 @@ class PokerTests extends Specification {
         game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
     }
 
-    def "Pair"() {}
+    def "Pair"() {
+        // все на столе
+        given:
+        List<Long> banks = [100, 100, 100]
+        Poker game = new Poker()
+        def commonCards = [new Card(Suit.CLUB, Rank.TEN), new Card(Suit.DIAMOND, Rank.QUEEN), new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.SPADE, Rank.ACE), new Card(Suit.CLUB, Rank.EIGHT)]
+        def playerCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.DIAMOND, Rank.TWO)]
+
+        when:
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.ONE_PAIR
+        game.arms[0].firstCard.rank == commonCards[1].rank
+        game.arms[0].secondCard.rank == commonCards[3].rank
+        game.arms[0].playerCardNumbers == []
+        game.arms[0].commonCardNumbers == [0, 1, 2, 3, 4]
+
+        // пара на столе, одна карта у игрока
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.THREE), new Card(Suit.DIAMOND, Rank.QUEEN), new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.SPADE, Rank.ACE), new Card(Suit.CLUB, Rank.EIGHT)]
+        playerCards = [new Card(Suit.HEART, Rank.FIVE), new Card(Suit.DIAMOND, Rank.JACK)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.ONE_PAIR
+        game.arms[0].firstCard.rank == commonCards[1].rank
+        game.arms[0].secondCard.rank == commonCards[3].rank
+        game.arms[0].playerCardNumbers == [1]
+        game.arms[0].commonCardNumbers == [1, 2, 3, 4]
+
+        // пара на столе, две карты у игрока
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.THREE), new Card(Suit.DIAMOND, Rank.QUEEN), new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.SPADE, Rank.FOUR), new Card(Suit.CLUB, Rank.EIGHT)]
+        playerCards = [new Card(Suit.HEART, Rank.NINE), new Card(Suit.DIAMOND, Rank.JACK)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.ONE_PAIR
+        game.arms[0].firstCard.rank == commonCards[1].rank
+        game.arms[0].secondCard.rank == playerCards[1].rank
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [1, 2, 4]
+
+        // пара у игрока
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.THREE), new Card(Suit.DIAMOND, Rank.JACK), new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.SPADE, Rank.FOUR), new Card(Suit.CLUB, Rank.EIGHT)]
+        playerCards = [new Card(Suit.HEART, Rank.NINE), new Card(Suit.DIAMOND, Rank.NINE)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.ONE_PAIR
+        game.arms[0].firstCard.rank == playerCards[0].rank
+        game.arms[0].secondCard.rank == commonCards[2].rank
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [1, 2, 4]
+
+        // пара пополам
+        when:
+        commonCards = [new Card(Suit.CLUB, Rank.NINE), new Card(Suit.DIAMOND, Rank.JACK), new Card(Suit.HEART, Rank.QUEEN), new Card(Suit.SPADE, Rank.FOUR), new Card(Suit.CLUB, Rank.EIGHT)]
+        playerCards = [new Card(Suit.HEART, Rank.ACE), new Card(Suit.DIAMOND, Rank.NINE)]
+
+        game.startGame(banks)
+        game.firstGame()
+        changeCards(game, commonCards, playerCards)
+        game.checkCombination(game.arms[0])
+
+        then:
+        game.arms[0].combination == Combination.ONE_PAIR
+        game.arms[0].firstCard.rank == playerCards[1].rank
+        game.arms[0].secondCard.rank == playerCards[0].rank
+        game.arms[0].playerCardNumbers == [0, 1]
+        game.arms[0].commonCardNumbers == [0, 1, 2]
+    }
 
     private void changeCards(Poker game, List<Card> commonCards, List<Card> playerCards) {
         game.commonCards = commonCards

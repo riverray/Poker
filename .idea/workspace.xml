@@ -68,7 +68,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
-  <component name="RunManager" selected="JUnit.PokerTests.TwoPair">
+  <component name="RunManager" selected="JUnit.PokerTests">
     <configuration name="PokerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Poker.test" />
       <extension name="coverage">
@@ -87,7 +87,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PokerTests.Flush" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PokerTests.Pair" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Poker.test" />
       <extension name="coverage">
         <pattern>
@@ -97,7 +97,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
       <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
-      <option name="METHOD_NAME" value="Flush" />
+      <option name="METHOD_NAME" value="Pair" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -153,18 +153,18 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.PokerTests" />
-      <item itemvalue="JUnit.PokerTests.Flush" />
       <item itemvalue="JUnit.PokerTests.Straight" />
       <item itemvalue="JUnit.PokerTests.Three" />
       <item itemvalue="JUnit.PokerTests.TwoPair" />
+      <item itemvalue="JUnit.PokerTests.Pair" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PokerTests.TwoPair" />
         <item itemvalue="JUnit.PokerTests" />
+        <item itemvalue="JUnit.PokerTests.Pair" />
+        <item itemvalue="JUnit.PokerTests.TwoPair" />
         <item itemvalue="JUnit.PokerTests.Three" />
         <item itemvalue="JUnit.PokerTests.Straight" />
-        <item itemvalue="JUnit.PokerTests.Flush" />
       </list>
     </recent_temporary>
   </component>
@@ -214,22 +214,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583831700768" />
-    <state width="1877" height="218" key="GridCell.Tab.0.bottom" timestamp="1583918477524">
+    <state width="1877" height="218" key="GridCell.Tab.0.bottom" timestamp="1583920488908">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583918477524" />
-    <state width="1877" height="218" key="GridCell.Tab.0.center" timestamp="1583918477523">
+    <state width="1877" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583920488908" />
+    <state width="1877" height="218" key="GridCell.Tab.0.center" timestamp="1583920488908">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583918477523" />
-    <state width="1877" height="218" key="GridCell.Tab.0.left" timestamp="1583918477523">
+    <state width="1877" height="218" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583920488908" />
+    <state width="1877" height="218" key="GridCell.Tab.0.left" timestamp="1583920488908">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583918477523" />
-    <state width="1877" height="218" key="GridCell.Tab.0.right" timestamp="1583918477524">
+    <state width="1877" height="218" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583920488908" />
+    <state width="1877" height="218" key="GridCell.Tab.0.right" timestamp="1583920488908">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583918477524" />
+    <state width="1877" height="218" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583920488908" />
     <state width="1877" height="302" key="GridCell.Tab.1.bottom" timestamp="1583852838982">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -250,10 +250,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="163" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1582711082133" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1582729139848">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1583919672223">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1582729139848" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583919672223" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

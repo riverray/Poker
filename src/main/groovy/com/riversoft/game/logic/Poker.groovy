@@ -53,7 +53,7 @@ class Poker {
             getArmCards(arm)
             fillAllCards(arm)
 
-            checkCombination(arm)
+//            checkCombination(arm)
         }
 
 
@@ -446,7 +446,39 @@ class Poker {
     }
 
     boolean isOnePair(Arm arm) {
-        return false
+        // проверяем на пару
+        Card firstCard = null
+        Card secondCard = null
+
+        if (arm.allCards.count { t -> t.rank == arm.allCards[5].rank } == 2) {
+            firstCard = arm.allCards[5]
+        }
+        else if (arm.allCards.count { t -> t.rank == arm.allCards[3].rank } == 2) {
+            firstCard = arm.allCards[3]
+        }
+        else if (arm.allCards.count { t -> t.rank == arm.allCards[1].rank } == 2) {
+            firstCard = arm.allCards[1]
+        }
+
+        // если нет пары - выходим
+        if (firstCard == null) {
+            return false
+        }
+
+        // отбираем оставшиеся карты
+        def otherCards = arm.allCards.findAll { t -> t.rank != firstCard.rank }.sort { t -> t.rank }.drop(2)
+
+        arm.combination = Combination.ONE_PAIR
+        arm.firstCard = firstCard
+        arm.secondCard = otherCards.last()
+
+        // заносим пары в комбинацию
+        arm.comboCards.addAll(arm.allCards.findAll { t -> t.rank == arm.firstCard.rank }.toList())
+        arm.comboCards.addAll(otherCards.toList())
+
+        fillNumberLists(arm)
+
+        return true
     }
 
     // проверка на классический стрит, надо обязательно 5 карт
