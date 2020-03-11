@@ -6,6 +6,7 @@ import com.riversoft.game.enums.Status
 import com.riversoft.game.enums.Suit
 import com.riversoft.game.model.Arm
 import com.riversoft.game.model.Card
+import com.riversoft.game.model.RetModel
 
 class Poker {
     Random rand = new Random()
@@ -14,6 +15,9 @@ class Poker {
 
     List<Arm> arms = []
     List<Card> commonCards = []
+
+    int buttonNumber = 0
+    int blaindSize = 0
 
     Poker() {
         def suits = Suit.values()
@@ -31,14 +35,59 @@ class Poker {
         deck = allCards.collect()
     }
 
-    void startGame(List<Long> banks) {
+    void startGame(List<Long> banks, int blaindSize) {
         arms.clear()
         for (int i = 0; i < banks.size(); i++) {
             arms.add(new Arm(bank: banks[i], active: true, status: Status.READY))
         }
+
+        buttonNumber = 0
+        this.blaindSize = blaindSize
     }
 
-    void firstGame() {
+    void changeBank(int armNumber, long amount) {
+        if (arms.size() > 0 && armNumber <= arms.size()) {
+            arms[armNumber - 1].bank += amount
+        }
+    }
+
+    void fold(int armNumber) {
+        if (arms.size() > 0 && armNumber <= arms.size()) {
+            arms[armNumber - 1].status = Status.FOLD
+        }
+    }
+
+    void check(int armNumber) {
+        if (arms.size() > 0 && armNumber <= arms.size()) {
+            arms[armNumber - 1].status = Status.CHECK
+        }
+    }
+
+    void call(int armNumber, long amount) {
+        if (arms.size() > 0 && armNumber <= arms.size()) {
+            arms[armNumber - 1].status = Status.CALL
+            arms[armNumber - 1].bet += amount
+        }
+    }
+
+    void raise(int armNumber, long amount) {
+        if (arms.size() > 0 && armNumber <= arms.size()) {
+            arms[armNumber - 1].status = Status.RAISE
+            arms[armNumber - 1].bet += amount
+        }
+    }
+
+    void changeDealer() {
+        if (buttonNumber < arms.size()) {
+            buttonNumber++
+        }
+        else {
+            buttonNumber = 0
+        }
+    }
+
+    // первая раздача
+    RetModel firstGame() {
         shuffleDeck()
 
         // раздаем карты на стол
@@ -50,11 +99,14 @@ class Poker {
                 continue
             }
 
+            // получаем карты игроков
             getArmCards(arm)
             fillAllCards(arm)
 
 //            checkCombination(arm)
         }
+
+        return new RetModel()
 
 
         111
