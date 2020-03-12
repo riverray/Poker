@@ -20,6 +20,9 @@ class Poker {
     int buttonNumber = 0
     int blaindSize = 0
 
+    int hod = 0
+    int currentBet = 0
+
     Poker() {
         def suits = Suit.values()
         def ranks = Rank.values()
@@ -47,27 +50,28 @@ class Poker {
     }
 
     void changeBank(int armNumber, long amount) {
-        if (arms.size() > 0 && armNumber <= arms.size()) {
-            arms[armNumber - 1].bank += amount
+        if (arms.size() > 0 && armNumber < arms.size()) {
+            arms[armNumber].bank += amount
         }
     }
 
     void fold(int armNumber) {
-        if (arms.size() > 0 && armNumber <= arms.size()) {
-            arms[armNumber - 1].status = Status.FOLD
+        if (arms.size() > 0 && armNumber < arms.size()) {
+            arms[armNumber].status = Status.FOLD
         }
     }
 
     void check(int armNumber) {
-        if (arms.size() > 0 && armNumber <= arms.size()) {
-            arms[armNumber - 1].status = Status.CHECK
+        if (arms.size() > 0 && armNumber < arms.size()) {
+            arms[armNumber].status = Status.CHECK
         }
     }
 
     RetModel call(int armNumber, long amount) {
-        if (arms.size() > 0 && armNumber <= arms.size()) {
-            arms[armNumber - 1].status = Status.CALL
-            arms[armNumber - 1].bet += amount
+        if (arms.size() > 0 && armNumber < arms.size()) {
+            arms[armNumber].status = Status.CALL
+            arms[armNumber].bet += amount
+
         }
 
         boolean nextLevel = true
@@ -79,11 +83,17 @@ class Poker {
         }
 
         if (!nextLevel) {
+            hod++
+
+            int a = arms.sum { t -> t.bet }
+
             return new RetModel(
                     stage: Stage.PRE_FLOP,
                     allBank: arms.sum { t -> t.bet },
                     buttonNumber: buttonNumber,
-                    arms: arms.collect()
+                    arms: arms.collect(),
+                    hod: hod,
+                    currentBet: currentBet
             )
         }
         else {
@@ -95,20 +105,28 @@ class Poker {
                 fillAllCards(arm)
             }
 
+            // назначаем игрока, который должен делать ход (первый от дилера, не сбросивший карты)
+            // TODO проверка на сброс карт
+            hod = hod + 1 < arms.size() ? hod + 1 : 0
+
+            int a = arms.sum { t -> t.bet }
+
             return new RetModel(
                     stage: Stage.FLOP,
                     allBank: arms.sum { t -> t.bet },
                     buttonNumber: buttonNumber,
                     arms: arms.collect(),
-                    commonCards: commonCards.collect()
+                    commonCards: commonCards.collect(),
+                    hod: hod,
+                    currentBet: currentBet
             )
         }
     }
 
     void raise(int armNumber, long amount) {
-        if (arms.size() > 0 && armNumber <= arms.size()) {
-            arms[armNumber - 1].status = Status.RAISE
-            arms[armNumber - 1].bet += amount
+        if (arms.size() > 0 && armNumber < arms.size()) {
+            arms[armNumber].status = Status.RAISE
+            arms[armNumber].bet += amount
         }
     }
 
@@ -147,6 +165,9 @@ class Poker {
         int smallBlindIndex = buttonNumber + 1 < arms.size() ? buttonNumber + 1 : 0
         int bigBlindIndex = smallBlindIndex + 1 < arms.size() ? smallBlindIndex + 1 : 0
 
+        hod = bigBlindIndex + 1 < arms.size() - 1 ? bigBlindIndex + 1 : 0
+        currentBet = 2 * blaindSize
+
         arms[smallBlindIndex].bet = blaindSize
         arms[smallBlindIndex].status = Status.SMALL_BLIND
 
@@ -157,7 +178,9 @@ class Poker {
                 stage: Stage.PRE_FLOP,
                 allBank: 3 * blaindSize,
                 buttonNumber: buttonNumber,
-                arms: arms.collect()
+                arms: arms.collect(),
+                hod: hod,
+                currentBet: currentBet
         )
     }
 

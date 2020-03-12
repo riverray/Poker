@@ -9,20 +9,21 @@ class Arm {
     List<Card> cards = [] // две карты игрока
     List<Card> allCards = [] // все карты с учетом общих (семь)
     List<Card> comboCards = [] // карты, составляющие комбинацию (пять)
-    Card firstCard
-    Card secondCard
-    Card thirdCard
+    Card firstCard // первая карта комбинации
+    Card secondCard // вторая карта комбинации
+    Card thirdCard // третья карта комбинации
 
-    Combination combination = Combination.HIGH_CARD
+    Combination combination = Combination.HIGH_CARD // комбинация
 
-    List<Integer> playerCardNumbers = []
-    List<Integer> commonCardNumbers = []
+    List<Integer> playerCardNumbers = [] // номера карт игрока, участвующих в комбинации
+    List<Integer> commonCardNumbers = [] // номера общих карт, участвующих в комбинации
 
-    int bet
+    int bet // размер ставки
     int lastRaise
-    long bank
-    boolean active
-    Status status
+    long bank // банк игрока
+    boolean active // активность
+    Status status // статус
+
 
 
 }

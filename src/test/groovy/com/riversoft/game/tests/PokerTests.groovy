@@ -2,10 +2,13 @@ package com.riversoft.game.tests
 
 import com.riversoft.game.enums.Combination
 import com.riversoft.game.enums.Rank
+import com.riversoft.game.enums.Stage
 import com.riversoft.game.enums.Suit
 import com.riversoft.game.logic.Poker
 import com.riversoft.game.model.Card
 import spock.lang.Specification
+
+import javax.net.ssl.HostnameVerifier
 
 class PokerTests extends Specification {
     int blaindSize = 2
@@ -812,4 +815,24 @@ class PokerTests extends Specification {
     }
 
     // endregion
+
+    def "реализация префлопа"() {
+        given:
+        List<Long> banks = [100, 100, 100]
+        Poker game = new Poker()
+
+        when:
+        game.startGame(banks, blaindSize)
+        def model = game.firstGame()
+
+
+        while (model.stage != Stage.FLOP) {
+            if (model.arms[model.hod].bet < model.currentBet) {
+                model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
+            }
+        }
+
+        then:
+        game.arms.size() == banks.size()
+    }
 }

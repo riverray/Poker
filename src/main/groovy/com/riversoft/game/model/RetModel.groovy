@@ -17,4 +17,8 @@ class RetModel {
 
     int buttonNumber // номер руки дилера
 
+    int hod // номер руки чей ход
+
+    int currentBet // текущая максимальная ставка
+
 }
