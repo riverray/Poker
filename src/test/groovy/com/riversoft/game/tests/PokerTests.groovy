@@ -825,8 +825,36 @@ class PokerTests extends Specification {
         game.startGame(banks, blaindSize)
         def model = game.firstGame()
 
-
+        // колируем до тех пор, пока не выравниваем ставки
         while (model.stage != Stage.FLOP) {
+            if (model.arms[model.hod].bet < model.currentBet) {
+                model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
+            }
+        }
+
+        then:
+        game.arms.size() == banks.size()
+        game.hod == 1
+    }
+
+    def "реализация флопа"() {
+        given:
+        List<Long> banks = [100, 100, 100]
+        Poker game = new Poker()
+
+        when:
+        game.startGame(banks, blaindSize)
+        def model = game.firstGame()
+
+        // колируем до тех пор, пока не выравниваем ставки
+        while (model.stage != Stage.FLOP) {
+            if (model.arms[model.hod].bet < model.currentBet) {
+                model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
+            }
+        }
+
+        // чекаем до терна
+        while (model.stage != Stage.TURN) {
             if (model.arms[model.hod].bet < model.currentBet) {
                 model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
             }

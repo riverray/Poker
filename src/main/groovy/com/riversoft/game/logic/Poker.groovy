@@ -23,6 +23,8 @@ class Poker {
     int hod = 0
     int currentBet = 0
 
+    Stage currentStage
+
     Poker() {
         def suits = Suit.values()
         def ranks = Rank.values()
@@ -41,6 +43,8 @@ class Poker {
 
     void startGame(List<Long> banks, int blaindSize) {
         arms.clear()
+        commonCards.clear()
+
         for (int i = 0; i < banks.size(); i++) {
             arms.add(new Arm(bank: banks[i], active: true, status: Status.READY))
         }
@@ -74,6 +78,7 @@ class Poker {
 
         }
 
+        // нужно ли переходить к следующему этапу
         boolean nextLevel = true
         int bet = arms[0].bet
         for (def arm : arms) {
@@ -82,13 +87,15 @@ class Poker {
             }
         }
 
+        // TODO реализовать проверку на All-In
+        // проверка на олин
+
+        // пока на том же уровне
         if (!nextLevel) {
             hod++
 
-            int a = arms.sum { t -> t.bet }
-
             return new RetModel(
-                    stage: Stage.PRE_FLOP,
+                    stage: currentStage,
                     allBank: arms.sum { t -> t.bet },
                     buttonNumber: buttonNumber,
                     arms: arms.collect(),
@@ -96,9 +103,12 @@ class Poker {
                     currentBet: currentBet
             )
         }
+        // переход на следующий уровень
         else {
-            // раздаем общие карты
-            getCommonCards()
+            if (currentStage == Stage.PRE_FLOP) {
+                // раздаем общие карты
+                getCommonCards()
+            }
 
             // заполняем карты рук
             for (def arm : arms) {
@@ -107,9 +117,10 @@ class Poker {
 
             // назначаем игрока, который должен делать ход (первый от дилера, не сбросивший карты)
             // TODO проверка на сброс карт
-            hod = hod + 1 < arms.size() ? hod + 1 : 0
+            hod = buttonNumber + 1 < arms.size() ? buttonNumber + 1 : 0
 
-            int a = arms.sum { t -> t.bet }
+            // определение нового этапа
+            Stage stage
 
             return new RetModel(
                     stage: Stage.FLOP,
@@ -127,6 +138,13 @@ class Poker {
         if (arms.size() > 0 && armNumber < arms.size()) {
             arms[armNumber].status = Status.RAISE
             arms[armNumber].bet += amount
+        }
+    }
+
+    void allIn(int armNumber) {
+        if (arms.size() > 0 && armNumber < arms.size()) {
+            arms[armNumber].status = Status.ALL_IN
+            arms[armNumber].bet = arms[armNumber].bank
         }
     }
 
