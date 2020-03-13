@@ -856,12 +856,49 @@ class PokerTests extends Specification {
             }
         }
 
-        111
+        // чекаем до терна
+        while (model.stage != Stage.TURN) {
+            if (model.arms[model.hod].status != Status.PAUSE && model.arms[model.hod].status != Status.FOLD && model.arms[model.hod].status != Status.OUT_GAME) {
+                model = game.check(model.hod)
+            }
+        }
+
+        then:
+        model.arms.size() == banks.size()
+        model.hod == 1
+        model.commonCards.size() == 4
+        model.arms[0].status == model.arms[1].status && model.arms[0].status == model.arms[2].status && model.arms[0].status == Status.TURN
+    }
+
+    def "реализация терна"() {
+        given:
+        List<Long> banks = [100, 100, 100]
+        Poker game = new Poker()
+
+        when:
+        game.startGame(banks, blaindSize)
+        def model = game.firstGame()
+
+        // колируем до тех пор, пока не выравниваем ставки
+        while (model.stage != Stage.FLOP) {
+            if (model.arms[model.hod].bet < model.currentBet) {
+                model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
+            }
+        }
 
         // чекаем до терна
         while (model.stage != Stage.TURN) {
             if (model.arms[model.hod].status != Status.PAUSE && model.arms[model.hod].status != Status.FOLD && model.arms[model.hod].status != Status.OUT_GAME) {
                 model = game.check(model.hod)
+            }
+        }
+
+        // колируем на первой играющей руке, и колируем остальными руками и ждем ривер
+        while (model.stage != Stage.RIVER) {
+            model = game.raise(model.hod, 2 * blaindSize)
+
+            if (model.arms[model.hod].status != Status.PAUSE && model.arms[model.hod].status != Status.FOLD && model.arms[model.hod].status != Status.OUT_GAME) {
+                model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
             }
         }
 

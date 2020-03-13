@@ -65,6 +65,7 @@ class Poker {
         }
     }
 
+    // чек, после чека может быть конец раунда
     RetModel check(int armNumber) {
         if (arms.size() > 0 && armNumber < arms.size()) {
             arms[armNumber].status = Status.CHECK
@@ -73,6 +74,7 @@ class Poker {
         return checkNextStage()
     }
 
+    // кол, после кола может быть конец раунда
     RetModel call(int armNumber, long amount) {
         if (arms.size() > 0 && armNumber < arms.size()) {
             arms[armNumber].status = Status.CALL
@@ -82,6 +84,7 @@ class Poker {
         return checkNextStage()
     }
 
+    // рейз, конца раунда быть не может
     void raise(int armNumber, long amount) {
         if (arms.size() > 0 && armNumber < arms.size()) {
             arms[armNumber].status = Status.RAISE
@@ -152,7 +155,30 @@ class Poker {
                 nextLevel = false
             }
         }
+        // на терне пока есть активная рука с несовпадающими ставками
+        // на терне пока статус тетна или рейза
+        else if (currentStage == Stage.TURN) {
+            // выбираем первую ставку
+            for (def arm : arms) {
+                if (arm.status == Status.TURN || arm.status == Status.CHECK || arm.status == Status.CALL) {
+                    bet = arm.bet
+                    break
+                }
+            }
 
+            nextLevel = true
+
+            for (def arm : arms) {
+                if (arm.status != Status.OUT_GAME && arm.status != Status.PAUSE && arm.status != Status.FOLD && arm.bet != bet) {
+                    nextLevel = false
+                }
+            }
+
+
+            if (arms.any { t -> t.status == Status.TURN || t.status == Status.RAISE }) {
+                nextLevel = false
+            }
+        }
         // TODO реализовать проверку на All-In
         // проверка на All-In
 
@@ -192,7 +218,7 @@ class Poker {
                     arms: arms.collect(),
                     commonCards: commonCards.collect(),
                     hod: hod,
-                    currentBet: currentBet
+                    currentBet: arms.findAll { t -> t.status == Status.FLOP }.max { n -> n.bet } as int
             )
         }
         // переход на следующий уровень
@@ -217,7 +243,7 @@ class Poker {
                     arms: arms.collect(),
                     commonCards: commonCards.collect(),
                     hod: hod,
-                    currentBet: currentBet
+                    currentBet: arms.findAll { t -> t.status == Status.TURN }.max { n -> n.bet } as int
             )
         }
 
