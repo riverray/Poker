@@ -5,7 +5,7 @@ import com.riversoft.game.enums.Stage
 import com.riversoft.game.enums.Status
 import groovy.transform.ToString
 
-@ToString (includeNames = true)
+@ToString (includeNames = true, includePackage = false)
 class RetModel {
     Stage stage // этеп игры
 

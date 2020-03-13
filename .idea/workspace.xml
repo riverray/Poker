@@ -66,7 +66,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Groovy" />
   </component>
   <component name="RunManager" selected="JUnit.PokerTests">
     <configuration name="PokerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -98,6 +98,38 @@
       <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
       <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
       <option name="METHOD_NAME" value="реализация префлопа" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PokerTests.реализация флопа" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Poker.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.riversoft.game.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
+      <option name="METHOD_NAME" value="реализация флопа" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PokerTests.реализация флопа" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Poker.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.riversoft.game.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
+      <option name="METHOD_NAME" value="реализация флопа" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -214,42 +246,42 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583831700768" />
-    <state width="938" height="169" key="GridCell.Tab.0.bottom" timestamp="1584016751806">
+    <state width="1877" height="169" key="GridCell.Tab.0.bottom" timestamp="1584103222963">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="169" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584016751806" />
-    <state width="938" height="169" key="GridCell.Tab.0.center" timestamp="1584016751806">
+    <state width="1877" height="169" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584103222963" />
+    <state width="1877" height="169" key="GridCell.Tab.0.center" timestamp="1584103222962">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="169" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584016751806" />
-    <state width="938" height="169" key="GridCell.Tab.0.left" timestamp="1584016751806">
+    <state width="1877" height="169" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584103222962" />
+    <state width="1877" height="169" key="GridCell.Tab.0.left" timestamp="1584103222962">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="169" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584016751806" />
-    <state width="938" height="169" key="GridCell.Tab.0.right" timestamp="1584016751806">
+    <state width="1877" height="169" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584103222962" />
+    <state width="1877" height="169" key="GridCell.Tab.0.right" timestamp="1584103222963">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="169" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584016751806" />
-    <state width="1877" height="319" key="GridCell.Tab.1.bottom" timestamp="1584011534672">
+    <state width="1877" height="169" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584103222963" />
+    <state width="1877" height="118" key="GridCell.Tab.1.bottom" timestamp="1584103217087">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="319" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584011534672" />
-    <state width="1877" height="319" key="GridCell.Tab.1.center" timestamp="1584011534672">
+    <state width="1877" height="118" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584103217087" />
+    <state width="1877" height="118" key="GridCell.Tab.1.center" timestamp="1584103217086">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="319" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584011534672" />
-    <state width="1877" height="319" key="GridCell.Tab.1.left" timestamp="1584011534672">
+    <state width="1877" height="118" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584103217086" />
+    <state width="1877" height="118" key="GridCell.Tab.1.left" timestamp="1584103217086">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="319" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584011534672" />
-    <state width="1877" height="319" key="GridCell.Tab.1.right" timestamp="1584011534672">
+    <state width="1877" height="118" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584103217086" />
+    <state width="1877" height="118" key="GridCell.Tab.1.right" timestamp="1584103217086">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="319" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584011534672" />
-    <state x="461" y="163" key="SettingsEditor" timestamp="1584016738595">
+    <state width="1877" height="118" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584103217086" />
+    <state x="461" y="163" key="SettingsEditor" timestamp="1584017445034">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="163" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584016738595" />
+    <state x="461" y="163" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584017445034" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1583919672223">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -260,63 +292,83 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>20</line>
+          <line>21</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>81</line>
+          <line>82</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>94</line>
+          <line>95</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>308</line>
+          <line>309</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>282</line>
+          <line>283</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>357</line>
+          <line>358</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>506</line>
+          <line>507</line>
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>223</line>
+          <line>224</line>
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>487</line>
+          <line>488</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>490</line>
+          <line>581</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>586</line>
+          <line>587</line>
           <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>835</line>
-          <option name="timeStamp" value="104" />
+          <line>836</line>
+          <option name="timeStamp" value="108" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
+          <line>829</line>
+          <option name="timeStamp" value="109" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
+          <line>868</line>
+          <option name="timeStamp" value="113" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
+          <line>858</line>
+          <option name="timeStamp" value="117" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
+          <line>230</line>
+          <option name="timeStamp" value="118" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

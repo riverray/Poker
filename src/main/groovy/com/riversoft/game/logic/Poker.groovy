@@ -65,73 +65,21 @@ class Poker {
         }
     }
 
-    void check(int armNumber) {
+    RetModel check(int armNumber) {
         if (arms.size() > 0 && armNumber < arms.size()) {
             arms[armNumber].status = Status.CHECK
         }
+
+        return checkNextStage()
     }
 
     RetModel call(int armNumber, long amount) {
         if (arms.size() > 0 && armNumber < arms.size()) {
             arms[armNumber].status = Status.CALL
             arms[armNumber].bet += amount
-
         }
 
-        // нужно ли переходить к следующему этапу
-        boolean nextLevel = true
-        int bet = arms[0].bet
-        for (def arm : arms) {
-            if (arm.bet != bet) {
-                nextLevel = false
-            }
-        }
-
-        // TODO реализовать проверку на All-In
-        // проверка на олин
-
-        // пока на том же уровне
-        if (!nextLevel) {
-            hod++
-
-            return new RetModel(
-                    stage: currentStage,
-                    allBank: arms.sum { t -> t.bet },
-                    buttonNumber: buttonNumber,
-                    arms: arms.collect(),
-                    hod: hod,
-                    currentBet: currentBet
-            )
-        }
-        // переход на следующий уровень
-        else {
-            if (currentStage == Stage.PRE_FLOP) {
-                // раздаем общие карты
-                getCommonCards()
-            }
-
-            // заполняем карты рук
-            for (def arm : arms) {
-                fillAllCards(arm)
-            }
-
-            // назначаем игрока, который должен делать ход (первый от дилера, не сбросивший карты)
-            // TODO проверка на сброс карт
-            hod = buttonNumber + 1 < arms.size() ? buttonNumber + 1 : 0
-
-            // определение нового этапа
-            Stage stage
-
-            return new RetModel(
-                    stage: Stage.FLOP,
-                    allBank: arms.sum { t -> t.bet },
-                    buttonNumber: buttonNumber,
-                    arms: arms.collect(),
-                    commonCards: commonCards.collect(),
-                    hod: hod,
-                    currentBet: currentBet
-            )
-        }
+        return checkNextStage()
     }
 
     void raise(int armNumber, long amount) {
@@ -157,12 +105,145 @@ class Poker {
         }
     }
 
+    RetModel checkNextStage() {
+        // нужно ли переходить к следующему этапу
+        boolean nextLevel
+        int bet
+
+        // на префлопе должно быть выравнивание ставок
+        if (currentStage == Stage.PRE_FLOP) {
+            // выбираем первую ставку
+            for (def arm : arms) {
+                if (arm.status != Status.OUT_GAME && arm.status != Status.PAUSE && arm.status != Status.FOLD) {
+                    bet = arm.bet
+                    break
+                }
+            }
+
+            nextLevel = true
+
+            for (def arm : arms) {
+                if (arm.status != Status.OUT_GAME && arm.status != Status.PAUSE && arm.status != Status.FOLD && arm.bet != bet) {
+                    nextLevel = false
+                }
+            }
+        }
+        // на флопе пока есть активная рука с несовпадающими ставками
+        // на флопе пока статус флопа или рейза
+        else if (currentStage == Stage.FLOP) {
+            // выбираем первую ставку
+            for (def arm : arms) {
+                if (arm.status == Status.FLOP || arm.status == Status.CHECK || arm.status == Status.CALL) {
+                    bet = arm.bet
+                    break
+                }
+            }
+
+            nextLevel = true
+
+            for (def arm : arms) {
+                if (arm.status != Status.OUT_GAME && arm.status != Status.PAUSE && arm.status != Status.FOLD && arm.bet != bet) {
+                    nextLevel = false
+                }
+            }
+
+
+            if (arms.any { t -> t.status == Status.FLOP || t.status == Status.RAISE }) {
+                nextLevel = false
+            }
+        }
+
+        // TODO реализовать проверку на All-In
+        // проверка на All-In
+
+        // пока на том же уровне
+        if (!nextLevel) {
+            hod = hod + 1 < arms.size() ? hod + 1 : 0
+
+            return new RetModel(
+                    stage: currentStage,
+                    allBank: arms.sum { t -> t.bet } as long,
+                    buttonNumber: buttonNumber,
+                    arms: arms.collect(),
+                    hod: hod,
+                    currentBet: currentBet
+            )
+        }
+
+        // переход на следующий уровень
+        if (currentStage == Stage.PRE_FLOP) {
+            // раздаем 3 общие карты
+            getCommonCards(currentStage)
+
+            currentStage = Stage.FLOP
+
+            for (def arm : arms) {
+                if (arm.status != Status.PAUSE && arm.status != Status.FOLD && arm.status != Status.OUT_GAME) {
+                    arm.status = Status.FLOP
+                }
+            }
+
+            hod = buttonNumber + 1 < arms.size() ? buttonNumber + 1 : 0
+
+            return new RetModel(
+                    stage: currentStage,
+                    allBank: arms.sum { t -> t.bet } as long,
+                    buttonNumber: buttonNumber,
+                    arms: arms.collect(),
+                    commonCards: commonCards.collect(),
+                    hod: hod,
+                    currentBet: currentBet
+            )
+        }
+        // переход на следующий уровень
+        else if (currentStage == Stage.FLOP) {
+            // раздаем 4-ю карту
+            getCommonCards(currentStage)
+
+            currentStage = Stage.TURN
+
+            for (def arm : arms) {
+                if (arm.status != Status.PAUSE && arm.status != Status.FOLD && arm.status != Status.OUT_GAME) {
+                    arm.status = Status.TURN
+                }
+            }
+
+            hod = buttonNumber + 1 < arms.size() ? buttonNumber + 1 : 0
+
+            return new RetModel(
+                    stage: currentStage,
+                    allBank: arms.sum { t -> t.bet } as long,
+                    buttonNumber: buttonNumber,
+                    arms: arms.collect(),
+                    commonCards: commonCards.collect(),
+                    hod: hod,
+                    currentBet: currentBet
+            )
+        }
+
+        // заполняем карты рук
+        for (def arm : arms) {
+            fillAllCards(arm)
+        }
+
+        // назначаем игрока, который должен делать ход (первый от дилера, не сбросивший карты)
+        // TODO проверка на сброс карт
+        hod = buttonNumber + 1 < arms.size() ? buttonNumber + 1 : 0
+
+        return new RetModel(
+                stage: Stage.FLOP,
+                allBank: arms.sum { t -> t.bet } as long,
+                buttonNumber: buttonNumber,
+                arms: arms.collect(),
+                commonCards: commonCards.collect(),
+                hod: hod,
+                currentBet: currentBet
+        )
+    }
+
     // первая раздача
     RetModel firstGame() {
         shuffleDeck()
-
-//        // раздаем карты на стол
-//        getCommonCards()
 
         // раздаем карты игрокам, которые в статусе "готов"
         for (def arm : arms) {
@@ -192,6 +273,8 @@ class Poker {
         arms[bigBlindIndex].bet = 2 * blaindSize
         arms[bigBlindIndex].status = Status.BIG_BLIND
 
+        currentStage = Stage.PRE_FLOP
+
         return new RetModel(
                 stage: Stage.PRE_FLOP,
                 allBank: 3 * blaindSize,
@@ -219,14 +302,22 @@ class Poker {
     }
 
     // заполнение общих карт
-    void getCommonCards() {
-        commonCards.clear()
-
-        for (int i = 0; i < 5; i++) {
-            int index = rand.nextInt(deck.size())
-            commonCards.add(deck[index])
-            deck.remove(index)
+    void getCommonCards(Stage stage) {
+        if (stage == Stage.PRE_FLOP) {
+            for (int i = 0; i < 3; i++) {
+                getCard()
+            }
         }
+        else if (stage == Stage.FLOP || stage == Stage.TURN) {
+            getCard()
+        }
+    }
+
+    // выдача одной карты на стол
+    private void getCard() {
+        int index = rand.nextInt(deck.size())
+        commonCards.add(deck[index])
+        deck.remove(index)
     }
 
     // проверка комбинаций после открытия всех семи карт

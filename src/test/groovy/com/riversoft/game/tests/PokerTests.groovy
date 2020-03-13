@@ -3,6 +3,7 @@ package com.riversoft.game.tests
 import com.riversoft.game.enums.Combination
 import com.riversoft.game.enums.Rank
 import com.riversoft.game.enums.Stage
+import com.riversoft.game.enums.Status
 import com.riversoft.game.enums.Suit
 import com.riversoft.game.logic.Poker
 import com.riversoft.game.model.Card
@@ -833,8 +834,10 @@ class PokerTests extends Specification {
         }
 
         then:
-        game.arms.size() == banks.size()
-        game.hod == 1
+        model.arms.size() == banks.size()
+        model.hod == 1
+        model.commonCards.size() == 3
+        model.arms[0].status == model.arms[1].status && model.arms[0].status == model.arms[2].status && model.arms[0].status == Status.FLOP
     }
 
     def "реализация флопа"() {
@@ -853,14 +856,19 @@ class PokerTests extends Specification {
             }
         }
 
+        111
+
         // чекаем до терна
         while (model.stage != Stage.TURN) {
-            if (model.arms[model.hod].bet < model.currentBet) {
-                model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
+            if (model.arms[model.hod].status != Status.PAUSE && model.arms[model.hod].status != Status.FOLD && model.arms[model.hod].status != Status.OUT_GAME) {
+                model = game.check(model.hod)
             }
         }
 
         then:
-        game.arms.size() == banks.size()
+        model.arms.size() == banks.size()
+        model.hod == 1
+        model.commonCards.size() == 4
+        model.arms[0].status == model.arms[1].status && model.arms[0].status == model.arms[2].status && model.arms[0].status == Status.TURN
     }
 }
