@@ -1,5 +1,15 @@
 package com.riversoft.game.enums
 
 enum Combination {
-    HIGH_CARD, ONE_PAIR, TWO_PAIR, THREE, STRAIGHT, FLUSH, FULL_HOUSE, FOUR, STRAIGHT_FLUSH, ROYAL_FLUSH
+    HIGH_CARD(1), ONE_PAIR(2), TWO_PAIR(3), THREE(4), STRAIGHT(5), FLUSH(6), FULL_HOUSE(7), FOUR(8), STRAIGHT_FLUSH(9), ROYAL_FLUSH(10)
+
+    private int number
+
+    Combination(int number) {
+        this.number = number
+    }
+
+    int getNumber() {
+        return number
+    }
 }

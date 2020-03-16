@@ -334,6 +334,7 @@ class Poker {
             for (def arm : arms) {
                 fillAllCards(arm)
                 checkCombination(arm)
+                arm.comboCards.sort { t -> t.rank }
             }
 
             return new RetModel(
@@ -460,6 +461,7 @@ class Poker {
         if (isOnePair(arm)) {
             return
         }
+        setHighCard(arm)
     }
 
     private void fillNumberLists(Arm arm) {
@@ -860,5 +862,15 @@ class Poker {
         }
 
         return false
+    }
+
+    void setHighCard(Arm arm) {
+        arm.comboCards = arm.allCards.sort { t -> t.rank }.drop(2)
+
+        arm.combination = Combination.HIGH_CARD
+        arm.firstCard = arm.comboCards.last()
+        arm.secondCard = arm.comboCards[3]
+
+        fillNumberLists(arm)
     }
 }
