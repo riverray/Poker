@@ -24,6 +24,7 @@ class Arm {
     boolean active // активность
     Status status // статус
 
+    int win = 0 // выигрыш при вскрытии
 
 
 }

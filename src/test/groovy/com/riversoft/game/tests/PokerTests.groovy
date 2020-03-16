@@ -831,6 +831,9 @@ class PokerTests extends Specification {
             if (model.arms[model.hod].bet < model.currentBet) {
                 model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
             }
+            else {
+                model = game.check(model.hod)
+            }
         }
 
         then:
@@ -853,6 +856,9 @@ class PokerTests extends Specification {
         while (model.stage != Stage.FLOP) {
             if (model.arms[model.hod].bet < model.currentBet) {
                 model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
+            }
+            else {
+                model = game.check(model.hod)
             }
         }
 
@@ -884,6 +890,9 @@ class PokerTests extends Specification {
             if (model.arms[model.hod].bet < model.currentBet) {
                 model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
             }
+            else {
+                model = game.check(model.hod)
+            }
         }
 
         // чекаем до терна
@@ -907,5 +916,56 @@ class PokerTests extends Specification {
         model.hod == 1
         model.commonCards.size() == 5
         model.arms[0].status == model.arms[1].status && model.arms[0].status == model.arms[2].status && model.arms[0].status == Status.RIVER
+    }
+
+    def "ривер и вскрытие карт"() {
+        given:
+        List<Long> banks = [100, 100, 100]
+        Poker game = new Poker()
+
+        when:
+        game.startGame(banks, blaindSize)
+        def model = game.firstGame()
+
+        // Префлоп - колируем до тех пор, пока не выравниваем ставки
+        while (model.stage != Stage.FLOP) {
+            if (model.arms[model.hod].bet < model.currentBet) {
+                model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
+            }
+            else {
+                model = game.check(model.hod)
+            }
+        }
+
+        // Флоп - чекаем до терна
+        while (model.stage != Stage.TURN) {
+            if (model.arms[model.hod].status != Status.PAUSE && model.arms[model.hod].status != Status.FOLD && model.arms[model.hod].status != Status.OUT_GAME) {
+                model = game.check(model.hod)
+            }
+        }
+
+        // Терн - колируем на первой играющей руке, и колируем остальными руками и ждем ривер
+        model = game.raise(model.hod, 2 * blaindSize)
+
+        while (model.stage != Stage.RIVER) {
+            if (model.arms[model.hod].status != Status.PAUSE && model.arms[model.hod].status != Status.FOLD && model.arms[model.hod].status != Status.OUT_GAME) {
+                model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
+            }
+        }
+
+        // колируем на первой играющей руке, и колируем остальными руками и ждем вскрытия
+        model = game.raise(model.hod, 2 * blaindSize)
+
+        while (model.stage != Stage.FINISH) {
+            if (model.arms[model.hod].status != Status.PAUSE && model.arms[model.hod].status != Status.FOLD && model.arms[model.hod].status != Status.OUT_GAME) {
+                model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
+            }
+        }
+
+        then:
+        model.arms.size() == banks.size()
+        model.hod == 1
+        model.commonCards.size() == 5
+        model.arms[0].status == model.arms[1].status && model.arms[0].status == model.arms[2].status && model.arms[0].status == Status.FINISH
     }
 }

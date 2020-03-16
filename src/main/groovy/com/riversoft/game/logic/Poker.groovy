@@ -135,6 +135,13 @@ class Poker {
 
             nextLevel = true
 
+            // если игрок на большой блайнде еще не принял решение
+            if (arms.any { t -> t.status == Status.BIG_BLIND }) {
+                nextLevel = false
+            }
+
+
+            // среди активных рук проверяем равенство ставок
             for (def arm : arms) {
                 if (arm.status != Status.OUT_GAME && arm.status != Status.PAUSE && arm.status != Status.FOLD && arm.bet != bet) {
                     nextLevel = false
@@ -160,13 +167,13 @@ class Poker {
                 }
             }
 
-
-            if (arms.any { t -> t.status == Status.FLOP || t.status == Status.RAISE }) {
+            // если кто-то еще не принял решение
+            if (arms.any { t -> t.status == Status.FLOP }) {
                 nextLevel = false
             }
         }
         // на терне пока есть активная рука с несовпадающими ставками
-        // на терне пока статус тетна или рейза
+        // на терне пока статус терна или рейза
         else if (currentStage == Stage.TURN) {
             // выбираем первую ставку
             for (def arm : arms) {
@@ -178,37 +185,48 @@ class Poker {
 
             nextLevel = true
 
+            // если кто-то еще не принял решение
+            if (arms.any { t -> t.status == Status.TURN }) {
+                nextLevel = false
+            }
+
             for (def arm : arms) {
                 if (arm.status != Status.OUT_GAME && arm.status != Status.PAUSE && arm.status != Status.FOLD && arm.bet != bet) {
                     nextLevel = false
                 }
             }
-
-
-//            if (arms.any { t -> t.status == Status.TURN || t.status == Status.RAISE }) {
-//                nextLevel = false
-//            }
         }
+        // на ривере пока есть активная рука с несовпадающими ставками
+        // на ривере пока статус ривера
+        else if (currentStage == Stage.RIVER) {
+            // выбираем первую ставку
+            for (def arm : arms) {
+                if (arm.status == Status.RIVER || arm.status == Status.CHECK || arm.status == Status.CALL) {
+                    bet = arm.bet
+                    break
+                }
+            }
+
+            nextLevel = true
+
+            // если кто-то еще не принял решение
+            if (arms.any { t -> t.status == Status.TURN }) {
+                nextLevel = false
+            }
+
+            for (def arm : arms) {
+                if (arm.status != Status.OUT_GAME && arm.status != Status.PAUSE && arm.status != Status.FOLD && arm.bet != bet) {
+                    nextLevel = false
+                }
+            }
+        }
+
         // TODO реализовать проверку на All-In
         // проверка на All-In
 
         // пока на том же уровне
         if (!nextLevel) {
             hod = hod + 1 < arms.size() ? hod + 1 : 0
-
-//            Status currentStatus
-//            if (currentStage == Stage.PRE_FLOP) {
-//                currentStatus = Status.PRE_FLOP
-//            }
-//            else if (currentStage == Stage.FLOP) {
-//                currentStatus = Status.FLOP
-//            }
-//            else if (currentStage == Stage.TURN) {
-//                currentStatus = Status.TURN
-//            }
-//            else if (currentStage == Stage.RIVER) {
-//                currentStatus = Status.RIVER
-//            }
 
             return new RetModel(
                     stage: currentStage,
@@ -299,25 +317,36 @@ class Poker {
 //                    currentBet: arms.findAll { t -> t.status == Status.TURN }.max { n -> n.bet }.bet
             )
         }
+        // переход на следующий уровень
+        else if (currentStage == Stage.RIVER) {
+            currentStage = Stage.FINISH
 
-        // заполняем карты рук
-        for (def arm : arms) {
-            fillAllCards(arm)
+            for (def arm : arms) {
+                if (arm.status != Status.PAUSE && arm.status != Status.FOLD && arm.status != Status.OUT_GAME) {
+                    arm.status = Status.FINISH
+                }
+            }
+
+            hod = buttonNumber + 1 < arms.size() ? buttonNumber + 1 : 0
+
+            // заполняем карты рук
+            // распознаем комбинации
+            for (def arm : arms) {
+                fillAllCards(arm)
+                checkCombination(arm)
+            }
+
+            return new RetModel(
+                    stage: currentStage,
+                    allBank: arms.sum { t -> t.bet } as long,
+                    buttonNumber: buttonNumber,
+                    arms: arms.collect(),
+                    commonCards: commonCards.collect(),
+                    hod: hod,
+                    currentBet: currentBet
+//                    currentBet: arms.findAll { t -> t.status == Status.TURN }.max { n -> n.bet }.bet
+            )
         }
-
-        // назначаем игрока, который должен делать ход (первый от дилера, не сбросивший карты)
-        // TODO проверка на сброс карт
-        hod = buttonNumber + 1 < arms.size() ? buttonNumber + 1 : 0
-
-        return new RetModel(
-                stage: Stage.FLOP,
-                allBank: arms.sum { t -> t.bet } as long,
-                buttonNumber: buttonNumber,
-                arms: arms.collect(),
-                commonCards: commonCards.collect(),
-                hod: hod,
-                currentBet: currentBet
-        )
     }
 
     // первая раздача

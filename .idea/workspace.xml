@@ -87,6 +87,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PokerTests.ривер и вскрытие карт" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Poker.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.riversoft.game.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.riversoft.game.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.riversoft.game.tests.PokerTests" />
+      <option name="METHOD_NAME" value="ривер и вскрытие карт" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PokerTests.реализация префлопа" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Poker.test" />
       <extension name="coverage">
@@ -206,10 +222,12 @@
       <item itemvalue="JUnit.PokerTests.делаем первую раздачу" />
       <item itemvalue="JUnit.PokerTests.реализация префлопа" />
       <item itemvalue="JUnit.PokerTests.реализация терна" />
+      <item itemvalue="JUnit.PokerTests.ривер и вскрытие карт" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PokerTests" />
+        <item itemvalue="JUnit.PokerTests.ривер и вскрытие карт" />
         <item itemvalue="JUnit.PokerTests.реализация терна" />
         <item itemvalue="JUnit.PokerTests.реализация префлопа" />
         <item itemvalue="JUnit.PokerTests.делаем первую раздачу" />
@@ -262,38 +280,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583831700768" />
-    <state width="1877" height="327" key="GridCell.Tab.0.bottom" timestamp="1584351887913">
+    <state width="1877" height="260" key="GridCell.Tab.0.bottom" timestamp="1584356065429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584351887913" />
-    <state width="1877" height="327" key="GridCell.Tab.0.center" timestamp="1584351887913">
+    <state width="1877" height="260" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584356065429" />
+    <state width="1877" height="260" key="GridCell.Tab.0.center" timestamp="1584356065429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584351887913" />
-    <state width="1877" height="327" key="GridCell.Tab.0.left" timestamp="1584351887912">
+    <state width="1877" height="260" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584356065429" />
+    <state width="1877" height="260" key="GridCell.Tab.0.left" timestamp="1584356065429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584351887912" />
-    <state width="1877" height="327" key="GridCell.Tab.0.right" timestamp="1584351887913">
+    <state width="1877" height="260" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584356065429" />
+    <state width="1877" height="260" key="GridCell.Tab.0.right" timestamp="1584356065429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584351887913" />
-    <state width="1877" height="425" key="GridCell.Tab.1.bottom" timestamp="1584351882766">
+    <state width="1877" height="260" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584356065429" />
+    <state width="1877" height="383" key="GridCell.Tab.1.bottom" timestamp="1584354748483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="425" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584351882766" />
-    <state width="1877" height="425" key="GridCell.Tab.1.center" timestamp="1584351882766">
+    <state width="1877" height="383" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584354748483" />
+    <state width="1877" height="383" key="GridCell.Tab.1.center" timestamp="1584354748483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="425" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584351882766" />
-    <state width="1877" height="425" key="GridCell.Tab.1.left" timestamp="1584351882766">
+    <state width="1877" height="383" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584354748483" />
+    <state width="1877" height="383" key="GridCell.Tab.1.left" timestamp="1584354748483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="425" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584351882766" />
-    <state width="1877" height="425" key="GridCell.Tab.1.right" timestamp="1584351882766">
+    <state width="1877" height="383" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584354748483" />
+    <state width="1877" height="383" key="GridCell.Tab.1.right" timestamp="1584354748483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="425" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584351882766" />
+    <state width="1877" height="383" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584354748483" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1584017445034">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -353,7 +371,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>634</line>
+          <line>689</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -363,28 +381,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>836</line>
+          <line>839</line>
           <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>866</line>
+          <line>872</line>
           <option name="timeStamp" value="113" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>283</line>
-          <option name="timeStamp" value="118" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/groovy/com/riversoft/game/tests/PokerTests.groovy</url>
-          <line>898</line>
-          <option name="timeStamp" value="126" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>123</line>
-          <option name="timeStamp" value="128" />
+          <line>917</line>
+          <option name="timeStamp" value="129" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
