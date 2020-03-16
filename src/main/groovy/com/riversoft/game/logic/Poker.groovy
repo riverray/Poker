@@ -79,17 +79,27 @@ class Poker {
         if (arms.size() > 0 && armNumber < arms.size()) {
             arms[armNumber].status = Status.CALL
             arms[armNumber].bet += amount
+
+            if (arms[armNumber].bet > currentBet) {
+                currentBet = arms[armNumber].bet
+            }
         }
 
         return checkNextStage()
     }
 
     // рейз, конца раунда быть не может
-    void raise(int armNumber, long amount) {
+    RetModel raise(int armNumber, long amount) {
         if (arms.size() > 0 && armNumber < arms.size()) {
             arms[armNumber].status = Status.RAISE
             arms[armNumber].bet += amount
         }
+
+        if (arms[armNumber].bet > currentBet) {
+            currentBet = arms[armNumber].bet
+        }
+
+        return checkNextStage()
     }
 
     void allIn(int armNumber) {
@@ -175,9 +185,9 @@ class Poker {
             }
 
 
-            if (arms.any { t -> t.status == Status.TURN || t.status == Status.RAISE }) {
-                nextLevel = false
-            }
+//            if (arms.any { t -> t.status == Status.TURN || t.status == Status.RAISE }) {
+//                nextLevel = false
+//            }
         }
         // TODO реализовать проверку на All-In
         // проверка на All-In
@@ -186,6 +196,20 @@ class Poker {
         if (!nextLevel) {
             hod = hod + 1 < arms.size() ? hod + 1 : 0
 
+//            Status currentStatus
+//            if (currentStage == Stage.PRE_FLOP) {
+//                currentStatus = Status.PRE_FLOP
+//            }
+//            else if (currentStage == Stage.FLOP) {
+//                currentStatus = Status.FLOP
+//            }
+//            else if (currentStage == Stage.TURN) {
+//                currentStatus = Status.TURN
+//            }
+//            else if (currentStage == Stage.RIVER) {
+//                currentStatus = Status.RIVER
+//            }
+
             return new RetModel(
                     stage: currentStage,
                     allBank: arms.sum { t -> t.bet } as long,
@@ -193,6 +217,7 @@ class Poker {
                     arms: arms.collect(),
                     hod: hod,
                     currentBet: currentBet
+//                    currentBet: arms.findAll { t -> t.status == currentStatus }.max { n -> n.bet }.bet
             )
         }
 
@@ -218,7 +243,8 @@ class Poker {
                     arms: arms.collect(),
                     commonCards: commonCards.collect(),
                     hod: hod,
-                    currentBet: arms.findAll { t -> t.status == Status.FLOP }.max { n -> n.bet } as int
+                    currentBet: currentBet
+//                    currentBet: arms.findAll { t -> t.status == Status.FLOP }.max { n -> n.bet }.bet
             )
         }
         // переход на следующий уровень
@@ -243,7 +269,34 @@ class Poker {
                     arms: arms.collect(),
                     commonCards: commonCards.collect(),
                     hod: hod,
-                    currentBet: arms.findAll { t -> t.status == Status.TURN }.max { n -> n.bet } as int
+                    currentBet: currentBet
+//                    currentBet: arms.findAll { t -> t.status == Status.TURN }.max { n -> n.bet }.bet
+            )
+        }
+        // переход на следующий уровень
+        else if (currentStage == Stage.TURN) {
+            // раздаем 5-ю карту
+            getCommonCards(currentStage)
+
+            currentStage = Stage.RIVER
+
+            for (def arm : arms) {
+                if (arm.status != Status.PAUSE && arm.status != Status.FOLD && arm.status != Status.OUT_GAME) {
+                    arm.status = Status.RIVER
+                }
+            }
+
+            hod = buttonNumber + 1 < arms.size() ? buttonNumber + 1 : 0
+
+            return new RetModel(
+                    stage: currentStage,
+                    allBank: arms.sum { t -> t.bet } as long,
+                    buttonNumber: buttonNumber,
+                    arms: arms.collect(),
+                    commonCards: commonCards.collect(),
+                    hod: hod,
+                    currentBet: currentBet
+//                    currentBet: arms.findAll { t -> t.status == Status.TURN }.max { n -> n.bet }.bet
             )
         }
 

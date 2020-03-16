@@ -894,9 +894,9 @@ class PokerTests extends Specification {
         }
 
         // колируем на первой играющей руке, и колируем остальными руками и ждем ривер
-        while (model.stage != Stage.RIVER) {
-            model = game.raise(model.hod, 2 * blaindSize)
+        model = game.raise(model.hod, 2 * blaindSize)
 
+        while (model.stage != Stage.RIVER) {
             if (model.arms[model.hod].status != Status.PAUSE && model.arms[model.hod].status != Status.FOLD && model.arms[model.hod].status != Status.OUT_GAME) {
                 model = game.call(model.hod, model.currentBet - model.arms[model.hod].bet)
             }
@@ -905,7 +905,7 @@ class PokerTests extends Specification {
         then:
         model.arms.size() == banks.size()
         model.hod == 1
-        model.commonCards.size() == 4
-        model.arms[0].status == model.arms[1].status && model.arms[0].status == model.arms[2].status && model.arms[0].status == Status.TURN
+        model.commonCards.size() == 5
+        model.arms[0].status == model.arms[1].status && model.arms[0].status == model.arms[2].status && model.arms[0].status == Status.RIVER
     }
 }
