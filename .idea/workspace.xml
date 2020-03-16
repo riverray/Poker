@@ -68,7 +68,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Groovy" />
   </component>
-  <component name="RunManager" selected="JUnit.PokerTests.ривер и вскрытие карт">
+  <component name="RunManager" selected="JUnit.PokerTests">
     <configuration name="PokerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Poker.test" />
       <extension name="coverage">
@@ -226,8 +226,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PokerTests.ривер и вскрытие карт" />
         <item itemvalue="JUnit.PokerTests" />
+        <item itemvalue="JUnit.PokerTests.ривер и вскрытие карт" />
         <item itemvalue="JUnit.PokerTests.реализация терна" />
         <item itemvalue="JUnit.PokerTests.реализация префлопа" />
         <item itemvalue="JUnit.PokerTests.делаем первую раздачу" />
@@ -280,38 +280,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583831700768" />
-    <state width="1877" height="516" key="GridCell.Tab.0.bottom" timestamp="1584358719180">
+    <state width="1877" height="516" key="GridCell.Tab.0.bottom" timestamp="1584373654502">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="516" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584358719180" />
-    <state width="1877" height="516" key="GridCell.Tab.0.center" timestamp="1584358719180">
+    <state width="1877" height="516" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584373654502" />
+    <state width="1877" height="516" key="GridCell.Tab.0.center" timestamp="1584373654502">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="516" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584358719180" />
-    <state width="1877" height="516" key="GridCell.Tab.0.left" timestamp="1584358719179">
+    <state width="1877" height="516" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584373654502" />
+    <state width="1877" height="516" key="GridCell.Tab.0.left" timestamp="1584373654502">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="516" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584358719179" />
-    <state width="1877" height="516" key="GridCell.Tab.0.right" timestamp="1584358719180">
+    <state width="1877" height="516" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584373654502" />
+    <state width="1877" height="516" key="GridCell.Tab.0.right" timestamp="1584373654502">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="516" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584358719180" />
-    <state width="1877" height="516" key="GridCell.Tab.1.bottom" timestamp="1584358720878">
+    <state width="1877" height="516" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584373654502" />
+    <state width="1877" height="516" key="GridCell.Tab.1.bottom" timestamp="1584373654502">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="516" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584358720878" />
-    <state width="1877" height="516" key="GridCell.Tab.1.center" timestamp="1584358720878">
+    <state width="1877" height="516" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584373654502" />
+    <state width="1877" height="516" key="GridCell.Tab.1.center" timestamp="1584373654502">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="516" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584358720878" />
-    <state width="1877" height="516" key="GridCell.Tab.1.left" timestamp="1584358720878">
+    <state width="1877" height="516" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584373654502" />
+    <state width="1877" height="516" key="GridCell.Tab.1.left" timestamp="1584373654502">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="516" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584358720878" />
-    <state width="1877" height="516" key="GridCell.Tab.1.right" timestamp="1584358720878">
+    <state width="1877" height="516" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584373654502" />
+    <state width="1877" height="516" key="GridCell.Tab.1.right" timestamp="1584373654502">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="516" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584358720878" />
+    <state width="1877" height="516" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584373654502" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1584017445034">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -371,7 +371,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/groovy/com/riversoft/game/logic/Poker.groovy</url>
-          <line>691</line>
+          <line>694</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

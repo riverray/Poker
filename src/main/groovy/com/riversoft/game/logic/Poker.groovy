@@ -337,6 +337,9 @@ class Poker {
                 arm.comboCards.sort { t -> t.rank }
             }
 
+            // сравнение комбинаций и определение победителя
+            def winCombinationList = arms.findAll { t -> t.status == Status.FINISH }
+
             return new RetModel(
                     stage: currentStage,
                     allBank: arms.sum { t -> t.bet } as long,
